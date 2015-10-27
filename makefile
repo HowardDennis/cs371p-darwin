@@ -1,6 +1,5 @@
 FILES :=                              \
     .travis.yml                       \
-    darwin-tests/hed287-RunDarwin.in   \
     darwin-tests/hed287-RunDarwin.out  \
     darwin-tests/hed287-TestDarwin.c++ \
     darwin-tests/hed287-TestDarwin.out \
@@ -9,7 +8,6 @@ FILES :=                              \
     Darwin.log                       \
     html                              \
     RunDarwin.c++                    \
-    RunDarwin.in                     \
     RunDarwin.out                    \
     TestDarwin.c++                   \
     TestDarwin.out
@@ -82,10 +80,6 @@ Doxyfile:
 
 RunDarwin: Darwin.h Darwin.c++ RunDarwin.c++
 	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) Darwin.c++ RunDarwin.c++ -o RunDarwin
-
-RunDarwin.tmp: RunDarwin
-	./RunDarwin < RunDarwin.in > RunDarwin.tmp
-	diff RunDarwin.tmp RunDarwin.out
 
 TestDarwin: Darwin.h Darwin.c++ TestDarwin.c++
 	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) Darwin.c++ TestDarwin.c++ -o TestDarwin $(LDFLAGS)
