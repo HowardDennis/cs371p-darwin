@@ -64,6 +64,8 @@ status:
 	git remote -v
 	git status
 
+test: RunDarwin.tmp TestDarwin.tmp
+
 darwin-tests:
 	git clone https://github.com/cs371p-fall-2015/darwin-tests.git
 
@@ -78,6 +80,10 @@ Doxyfile:
 
 RunDarwin: Darwin.h Darwin.c++ RunDarwin.c++
 	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) Darwin.c++ RunDarwin.c++ -o RunDarwin
+
+RunDarwin.tmp: RunDarwin
+	./RunDarwin > RunDarwin.tmp
+	diff RunDarwin.tmp RunDarwin.out
 
 TestDarwin: Darwin.h Darwin.c++ TestDarwin.c++
 	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) Darwin.c++ TestDarwin.c++ -o TestDarwin $(LDFLAGS)
