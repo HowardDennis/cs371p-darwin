@@ -1,11 +1,11 @@
 // --------------------------
-// projects/collatz/Collatz.h
+// projects/darwin/Darwin.h
 // Copyright (C) 2015
 // Glenn P. Downing
 // --------------------------
 
-#ifndef Collatz_h
-#define Collatz_h
+#ifndef Darwin_h
+#define Darwin_h
 
 // --------
 // includes
@@ -18,7 +18,7 @@
 using namespace std;
 
 // ------------
-// collatz_read
+// darwin_read
 // ------------
 
 /**
@@ -26,10 +26,10 @@ using namespace std;
  * @param s a string
  * @return a pair of ints, representing the beginning and end of a range, [i, j]
  */
-pair<int, int> collatz_read (const string& s);
+pair<int, int> darwin_read (const string& s);
 
 // ------------
-// collatz_eval
+// darwin_eval
 // ------------
 
 /**
@@ -37,10 +37,10 @@ pair<int, int> collatz_read (const string& s);
  * @param j the end       of the range, inclusive
  * @return the max cycle length of the range [i, j]
  */
-int collatz_eval (int i, int j);
+int darwin_eval (int i, int j);
 
 // -------------
-// collatz_print
+// darwin_print
 // -------------
 
 /**
@@ -50,16 +50,16 @@ int collatz_eval (int i, int j);
  * @param j the end       of the range, inclusive
  * @param v the max cycle length
  */
-void collatz_print (ostream& w, int i, int j, int v);
+void darwin_print (ostream& w, int i, int j, int v);
 
 // -------------
-// collatz_solve
+// darwin_solve
 // -------------
 
 /**
  * @param r an istream
  * @param w an ostream
  */
-void collatz_solve (istream& r, ostream& w);
+void darwin_solve (istream& r, ostream& w);
 
-#endif // Collatz_h
+#endif // Darwin_h
