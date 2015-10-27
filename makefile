@@ -64,8 +64,6 @@ status:
 	git remote -v
 	git status
 
-test: RunDarwin.tmp TestDarwin.tmp
-
 darwin-tests:
 	git clone https://github.com/cs371p-fall-2015/darwin-tests.git
 
