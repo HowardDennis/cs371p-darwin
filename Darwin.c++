@@ -1,5 +1,5 @@
 // ----------------------------
-// projects/collatz/Collatz.c++
+// projects/darwin/Darwin.c++
 // Copyright (C) 2015
 // Glenn P. Downing
 // ----------------------------
@@ -14,15 +14,15 @@
 #include <string>   // getline, string
 #include <utility>  // make_pair, pair
 
-#include "Collatz.h"
+#include "Darwin.h"
 
 using namespace std;
 
 // ------------
-// collatz_read
+// darwin_read
 // ------------
 
-pair<int, int> collatz_read (const string& s) {
+pair<int, int> darwin_read (const string& s) {
     istringstream sin(s);
     int i;
     int j;
@@ -30,29 +30,29 @@ pair<int, int> collatz_read (const string& s) {
     return make_pair(i, j);}
 
 // ------------
-// collatz_eval
+// darwin_eval
 // ------------
 
-int collatz_eval (int i, int j) {
+int darwin_eval (int i, int j) {
     // <your code>
     return 1;}
 
 // -------------
-// collatz_print
+// darwin_print
 // -------------
 
-void collatz_print (ostream& w, int i, int j, int v) {
+void darwin_print (ostream& w, int i, int j, int v) {
     w << i << " " << j << " " << v << endl;}
 
 // -------------
-// collatz_solve
+// darwin_solve
 // -------------
 
-void collatz_solve (istream& r, ostream& w) {
+void darwin_solve (istream& r, ostream& w) {
     string s;
     while (getline(r, s)) {
-        const pair<int, int> p = collatz_read(s);
+        const pair<int, int> p = darwin_read(s);
         const int            i = p.first;
         const int            j = p.second;
-        const int            v = collatz_eval(i, j);
-        collatz_print(w, i, j, v);}}
+        const int            v = darwin_eval(i, j);
+        darwin_print(w, i, j, v);}}
