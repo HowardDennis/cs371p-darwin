@@ -1,5 +1,5 @@
 // --------------------------------
-// projects/collatz/TestCollatz.c++
+// projects/darwin/TestDarwin.c++
 // Copyright (C) 2015
 // Glenn P. Downing
 // --------------------------------
@@ -17,21 +17,21 @@
 
 #include "gtest/gtest.h"
 
-#include "Collatz.h"
+#include "Darwin.h"
 
 using namespace std;
 
 // -----------
-// TestCollatz
+// TestDarwin
 // -----------
 
 // ----
 // read
 // ----
 
-TEST(CollatzFixture, read) {
+TEST(DarwinFixture, read) {
     string s("1 10\n");
-    const pair<int, int> p = collatz_read(s);
+    const pair<int, int> p = darwin_read(s);
     ASSERT_EQ( 1, p.first);
     ASSERT_EQ(10, p.second);}
 
@@ -39,77 +39,77 @@ TEST(CollatzFixture, read) {
 // eval
 // ----
 
-TEST(CollatzFixture, eval_1) {
-    const int v = collatz_eval(1, 10);
+TEST(DarwinFixture, eval_1) {
+    const int v = darwin_eval(1, 10);
     ASSERT_EQ(1, v);}
 
-TEST(CollatzFixture, eval_2) {
-    const int v = collatz_eval(100, 200);
+TEST(DarwinFixture, eval_2) {
+    const int v = darwin_eval(100, 200);
     ASSERT_EQ(1, v);}
 
-TEST(CollatzFixture, eval_3) {
-    const int v = collatz_eval(201, 210);
+TEST(DarwinFixture, eval_3) {
+    const int v = darwin_eval(201, 210);
     ASSERT_EQ(1, v);}
 
-TEST(CollatzFixture, eval_4) {
-    const int v = collatz_eval(900, 1000);
+TEST(DarwinFixture, eval_4) {
+    const int v = darwin_eval(900, 1000);
     ASSERT_EQ(1, v);}
 
 // -----
 // print
 // -----
 
-TEST(CollatzFixture, print) {
+TEST(DarwinFixture, print) {
     ostringstream w;
-    collatz_print(w, 1, 10, 20);
+    darwin_print(w, 1, 10, 20);
     ASSERT_EQ("1 10 20\n", w.str());}
 
 // -----
 // solve
 // -----
 
-TEST(CollatzFixture, solve) {
+TEST(DarwinFixture, solve) {
     istringstream r("1 10\n100 200\n201 210\n900 1000\n");
     ostringstream w;
-    collatz_solve(r, w);
+    darwin_solve(r, w);
     ASSERT_EQ("1 10 1\n100 200 1\n201 210 1\n900 1000 1\n", w.str());}
 
 /*
-% g++ -fprofile-arcs -ftest-coverage -pedantic -std=c++11 -Wall Collatz.c++ TestCollatz.c++ -o TestCollatz -lgtest -lgtest_main -lpthread
+% g++ -fprofile-arcs -ftest-coverage -pedantic -std=c++11 -Wall Darwin.c++ TestDarwin.c++ -o TestDarwin -lgtest -lgtest_main -lpthread
 
 
 
-% valgrind TestCollatz                                         >  TestCollatz.out 2>&1
-% gcov -b Collatz.c++     | grep -A 5 "File 'Collatz.c++'"     >> TestCollatz.out
-% gcov -b TestCollatz.c++ | grep -A 5 "File 'TestCollatz.c++'" >> TestCollatz.out
+% valgrind TestDarwin                                         >  TestDarwin.out 2>&1
+% gcov -b Darwin.c++     | grep -A 5 "File 'Darwin.c++'"     >> TestDarwin.out
+% gcov -b TestDarwin.c++ | grep -A 5 "File 'TestDarwin.c++'" >> TestDarwin.out
 
 
 
-% cat TestCollatz.out
+% cat TestDarwin.out
 ==14225== Memcheck, a memory error detector
 ==14225== Copyright (C) 2002-2011, and GNU GPL'd, by Julian Seward et al.
 ==14225== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
-==14225== Command: TestCollatz
+==14225== Command: TestDarwin
 ==14225==
 Running main() from gtest_main.cc
 [==========] Running 7 tests from 1 test case.
 [----------] Global test environment set-up.
-[----------] 7 tests from Collatz
-[ RUN      ] Collatz.read
-[       OK ] Collatz.read (31 ms)
-[ RUN      ] Collatz.eval_1
-[       OK ] Collatz.eval_1 (5 ms)
-[ RUN      ] Collatz.eval_2
-[       OK ] Collatz.eval_2 (3 ms)
-[ RUN      ] Collatz.eval_3
-[       OK ] Collatz.eval_3 (3 ms)
-[ RUN      ] Collatz.eval_4
-[       OK ] Collatz.eval_4 (3 ms)
-[ RUN      ] Collatz.print
-[       OK ] Collatz.print (17 ms)
-[ RUN      ] Collatz.solve
-[       OK ] Collatz.solve (10 ms)
-[----------] 7 tests from Collatz (88 ms total)
+[----------] 7 tests from Darwin
+[ RUN      ] Darwin.read
+[       OK ] Darwin.read (31 ms)
+[ RUN      ] Darwin.eval_1
+[       OK ] Darwin.eval_1 (5 ms)
+[ RUN      ] Darwin.eval_2
+[       OK ] Darwin.eval_2 (3 ms)
+[ RUN      ] Darwin.eval_3
+[       OK ] Darwin.eval_3 (3 ms)
+[ RUN      ] Darwin.eval_4
+[       OK ] Darwin.eval_4 (3 ms)
+[ RUN      ] Darwin.print
+[       OK ] Darwin.print (17 ms)
+[ RUN      ] Darwin.solve
+[       OK ] Darwin.solve (10 ms)
+[----------] 7 tests from Darwin (88 ms total)
 
 [----------] Global test environment tear-down
 [==========] 7 tests from 1 test case ran. (132 ms total)
@@ -123,16 +123,16 @@ Running main() from gtest_main.cc
 ==14225==
 ==14225== For counts of detected and suppressed errors, rerun with: -v
 ==14225== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 2 from 2)
-File 'Collatz.c++'
+File 'Darwin.c++'
 Lines executed:100.00% of 17
 Branches executed:100.00% of 18
 Taken at least once:61.11% of 18
 Calls executed:89.47% of 19
-Creating 'Collatz.c++.gcov'
-File 'TestCollatz.c++'
+Creating 'Darwin.c++.gcov'
+File 'TestDarwin.c++'
 Lines executed:100.00% of 26
 Branches executed:57.14% of 224
 Taken at least once:28.57% of 224
 Calls executed:54.07% of 209
-Creating 'TestCollatz.c++.gcov'
+Creating 'TestDarwin.c++.gcov'
 */
