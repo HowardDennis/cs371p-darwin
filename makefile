@@ -1,10 +1,16 @@
 FILES :=                              \
     .travis.yml                       \
-    darwin-tests/jem74-TestDarwin.c++ \
-    darwin-tests/jem74-TestDarwin.out \
+    darwin-tests/hed287-RunDarwin.in   \
+    darwin-tests/hed287-RunDarwin.out  \
+    darwin-tests/hed287-TestDarwin.c++ \
+    darwin-tests/hed287-TestDarwin.out \
+    Darwin.c++                       \
     Darwin.h                         \
     Darwin.log                       \
     html                              \
+    RunDarwin.c++                    \
+    RunDarwin.in                     \
+    RunDarwin.out                    \
     TestDarwin.c++                   \
     TestDarwin.out
 
@@ -38,6 +44,8 @@ clean:
 	rm -f *.gcda
 	rm -f *.gcno
 	rm -f *.gcov
+	rm -f RunDarwin
+	rm -f RunDarwin.tmp
 	rm -f TestDarwin
 	rm -f TestDarwin.tmp
 
@@ -58,12 +66,12 @@ status:
 	git remote -v
 	git status
 
-test: TestDarwin.tmp
+test: RunDarwin.tmp TestDarwin.tmp
 
 darwin-tests:
 	git clone https://github.com/cs371p-fall-2015/darwin-tests.git
 
-html: Doxyfile Darwin.h TestDarwin.c++
+html: Doxyfile Darwin.h Darwin.c++ RunDarwin.c++ TestDarwin.c++
 	doxygen Doxyfile
 
 Darwin.log:
@@ -72,10 +80,18 @@ Darwin.log:
 Doxyfile:
 	doxygen -g
 
-TestDarwin: Darwin.h TestDarwin.c++
-	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) TestDarwin.c++ -o TestDarwin $(LDFLAGS)
+RunDarwin: Darwin.h Darwin.c++ RunDarwin.c++
+	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) Darwin.c++ RunDarwin.c++ -o RunDarwin
+
+RunDarwin.tmp: RunDarwin
+	./RunDarwin < RunDarwin.in > RunDarwin.tmp
+	diff RunDarwin.tmp RunDarwin.out
+
+TestDarwin: Darwin.h Darwin.c++ TestDarwin.c++
+	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) Darwin.c++ TestDarwin.c++ -o TestDarwin $(LDFLAGS)
 
 TestDarwin.tmp: TestDarwin
 	$(VALGRIND) ./TestDarwin                                       >  TestDarwin.tmp 2>&1
+	$(GCOV) -b Darwin.c++     | grep -A 5 "File 'Darwin.c++'"     >> TestDarwin.tmp
 	$(GCOV) -b TestDarwin.c++ | grep -A 5 "File 'TestDarwin.c++'" >> TestDarwin.tmp
 	cat TestDarwin.tmp
