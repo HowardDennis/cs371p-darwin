@@ -11,8 +11,8 @@ class Species {
 		string name;
 
 	public:
-		Species(const Creature&);
-
+		Species(const Creature&, string n);
+		char act(char, char, char, char);
 		void addInstruction(const Instruction&);
 };
 
