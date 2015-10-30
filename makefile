@@ -10,6 +10,7 @@ FILES :=                              \
     RunDarwin.c++                    \
     RunDarwin.out                    \
     TestDarwin.c++                   \
+    test.c++						 \
     TestDarwin.out
 
 CXX        := g++-4.8
@@ -93,3 +94,6 @@ TestDarwin.tmp: TestDarwin
 	$(GCOV) -b Darwin.c++     | grep -A 5 "File 'Darwin.c++'"     >> TestDarwin.tmp
 	$(GCOV) -b TestDarwin.c++ | grep -A 5 "File 'TestDarwin.c++'" >> TestDarwin.tmp
 	cat TestDarwin.tmp
+
+trivial: test.c++ Darwin.h Instruction.h Species.h Creature.h Darwin.c++
+		$(CXX) $(CXXFLAGS) $(GCOVFLAGS) test.c++ Darwin.c++

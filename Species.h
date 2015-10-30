@@ -5,13 +5,15 @@
 
 using namespace std;
 
+class Creature;
+
 class Species {
 	private:
 		vector<Instruction> i;
 		string name;
 
 	public:
-		Species(const Creature&, string n);
+		Species(string n = "null");
 		char act(char, char, char, char);
 		void addInstruction(const Instruction&);
 };

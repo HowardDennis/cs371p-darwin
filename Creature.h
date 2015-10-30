@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Species.h"
-#include "Direction.h"
 #include <string>        // String
 
 using namespace std;
@@ -12,13 +11,13 @@ class Creature {
 	//DATA	
 		int program_ctr;
 		Species spec;
-		Direction dir;
+		char dir;
 		bool acted; // if the creature has acted this turn
 
 	//METHODS
 
 	public:
-		Creature(const Species&, Direction d);
+		Creature(const Species& s = Species(), char d = 0);
 		// send in information regarding area so creature can decide
 		char act(char n, char e, char s, char w);  //get instruction and execute
 		void refresh();

@@ -4,8 +4,7 @@
 // Glenn P. Downing
 // --------------------------
 
-#ifndef Darwin_h
-#define Darwin_h
+#pragma once
 
 // --------
 // includes
@@ -28,8 +27,7 @@ class Darwin {
 		void step(); // at beginning, refresh all creatures
 
 	public:
-		Darwin (int, int);
+		Darwin (int w = 0, int l = 0);
 		void addCreature(const Creature&, int, int);
 };
 
-#endif // Darwin_h

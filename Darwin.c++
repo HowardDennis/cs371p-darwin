@@ -18,41 +18,16 @@
 
 using namespace std;
 
-// ------------
-// darwin_read
-// ------------
+Darwin::Darwin (int w, int h) {
 
-pair<int, int> darwin_read (const string& s) {
-    istringstream sin(s);
-    int i;
-    int j;
-    sin >> i >> j;
-    return make_pair(i, j);}
+    vector<Creature> v(w);
 
-// ------------
-// darwin_eval
-// ------------
+    //grid.resize(w, vector<Creature>(w, nullptr)); // = vector< vector<Creature>(w) >(h);
 
-int darwin_eval (int i, int j) {
-    // <your code>
-    return 1;}
+}
 
-// -------------
-// darwin_print
-// -------------
+    void Darwin::addCreature(const Creature& c, int w, int h) {
 
-void darwin_print (ostream& w, int i, int j, int v) {
-    w << i << " " << j << " " << v << endl;}
+        grid[w][h] = c;
 
-// -------------
-// darwin_solve
-// -------------
-
-void darwin_solve (istream& r, ostream& w) {
-    string s;
-    while (getline(r, s)) {
-        const pair<int, int> p = darwin_read(s);
-        const int            i = p.first;
-        const int            j = p.second;
-        const int            v = darwin_eval(i, j);
-        darwin_print(w, i, j, v);}}
+    }
