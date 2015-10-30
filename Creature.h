@@ -9,8 +9,8 @@ class Creature {
 
 	private:
 	//DATA	
-		int program_ctr;
 		Species spec;
+		int pc;
 		char dir;
 		bool acted; // if the creature has acted this turn
 
@@ -20,5 +20,4 @@ class Creature {
 		Creature(const Species& s = Species(), char d = 0);
 		// send in information regarding area so creature can decide
 		char act(char n, char e, char s, char w);  //get instruction and execute
-		void refresh();
 };

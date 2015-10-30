@@ -1,11 +1,8 @@
 #pragma once
 #include "Instruction.h"
-#include "Creature.h"
 #include <string>        // String
 
 using namespace std;
-
-class Creature;
 
 class Species {
 	private:

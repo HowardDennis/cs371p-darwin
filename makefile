@@ -95,5 +95,5 @@ TestDarwin.tmp: TestDarwin
 	$(GCOV) -b TestDarwin.c++ | grep -A 5 "File 'TestDarwin.c++'" >> TestDarwin.tmp
 	cat TestDarwin.tmp
 
-trivial: test.c++ Darwin.h Instruction.h Species.h Creature.h Darwin.c++
-		$(CXX) $(CXXFLAGS) $(GCOVFLAGS) test.c++ Darwin.c++
+trivial: test.c++ Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++
+		$(CXX) $(CXXFLAGS) $(GCOVFLAGS) test.c++ Darwin.c++ Species.c++ Creature.c++
