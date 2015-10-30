@@ -10,9 +10,9 @@ class Creature {
 	private:
 	//DATA	
 		Species spec;
-		int pc;
-		char dir;
-		bool acted; // if the creature has acted this turn
+		int pc = 0;
+		char dir = 0;
+		bool acted = false; // if the creature has acted this turn
 
 	//METHODS
 
