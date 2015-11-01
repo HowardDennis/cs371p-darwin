@@ -3,8 +3,9 @@
 Creature::Creature(const Species& s, char d): 
 	spec(s) {}
 	
-	char Creature::act(char n, char e, char s, char w) { //get instruction and execute
-		spec.act(n, e, s, w, pc);
-	}  
+char Creature::act(char n, char e, char s, char w) { //get instruction and execute
+	spec.act(n, e, s, w, pc);
+	return 'c';//change me
+}
 
 	

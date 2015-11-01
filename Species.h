@@ -9,7 +9,7 @@ class Species {
 	friend class Creature;
 	private:
 		//DATA
-		vector<Instruction> i;
+		vector<Instruction*> i;
 		string name;
 
 		//METHODS
@@ -18,10 +18,5 @@ class Species {
 
 	public:
 		Species(string n = "null");
-		void addInstruction(const Instruction&);
+		void addInstruction(Instruction*);
 };
-
-
-
-
-

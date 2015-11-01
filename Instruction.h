@@ -8,7 +8,8 @@ using namespace std;
 class Instruction {
 	
 	public:
-		Instruction(string name = "null");
+		Instruction();
+		virtual ~Instruction();
 
 		virtual pair<int, char> act(char, char, char, char, int) = 0;
 
