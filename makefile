@@ -47,6 +47,7 @@ clean:
 	rm -f RunDarwin.tmp
 	rm -f TestDarwin
 	rm -f TestDarwin.tmp
+	rm -f test
 
 config:
 	git config -l
@@ -96,4 +97,5 @@ TestDarwin.tmp: TestDarwin
 	cat TestDarwin.tmp
 
 trivial: test.c++ Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++
-		$(CXX) $(CXXFLAGS) $(GCOVFLAGS) test.c++ Darwin.c++ Species.c++ Creature.c++
+		$(CXX) $(CXXFLAGS) $(GCOVFLAGS) test.c++ Darwin.c++ Species.c++ Creature.c++ -o test
+		make clean

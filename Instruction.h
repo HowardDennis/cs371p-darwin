@@ -2,6 +2,7 @@
 #include <string>        // String
 #include <vector>
 #include <utility>       //Pair
+#include <cstdlib>       //random
 
 using namespace std;
 
@@ -11,7 +12,7 @@ class Instruction {
 		Instruction();
 		virtual ~Instruction();
 
-		virtual pair<int, char> act(char, char, char, char, int) = 0;
+		virtual pair<int, char> act(char, char, char, char, int, char) = 0;
 
 };
 

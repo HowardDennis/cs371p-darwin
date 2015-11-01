@@ -13,7 +13,7 @@ class Species {
 		string name;
 
 		//METHODS
-		char act(char, char, char, char, int);
+		char act(char, char, char, char, int, char);
 
 
 	public:
