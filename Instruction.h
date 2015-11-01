@@ -1,14 +1,20 @@
 #pragma once
 #include <string>        // String
 #include <vector>
+#include <utility>       //Pair
 
 using namespace std;
 
 class Instruction {
-	private:
-		vector<string> names;
+	
+	public:
+		Instruction(string name = "null");
 
-		void hop();
+		virtual pair<int, char> act(char, char, char, char, int) = 0;
+
+};
+
+/*  	void hop();
 		void left();
 		void right();
 		void infect();
@@ -16,9 +22,4 @@ class Instruction {
 		void if_wall();
 		void if_random();
 		void if_enemy();
-		void go();
-		
-	public:
-		Instruction();
-
-};
+		void go(); //*/

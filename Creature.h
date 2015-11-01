@@ -15,9 +15,10 @@ class Creature {
 		bool acted = false; // if the creature has acted this turn
 
 	//METHODS
+		char act(char n, char e, char s, char w);  //get instruction and execute
+
 
 	public:
 		Creature(const Species& s = Species(), char d = 0);
 		// send in information regarding area so creature can decide
-		char act(char n, char e, char s, char w);  //get instruction and execute
 };
