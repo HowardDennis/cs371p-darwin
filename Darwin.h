@@ -19,12 +19,13 @@
 using namespace std;
 
 class Darwin {
-
 	private:
 		vector < vector<const Creature*> > grid;
 		vector < pair <int, int> > whitelist;
 		vector < pair <int, int> > next_whitelist;
-		void step(); // at beginning, refresh all creatures
+		void step(int n=1); // a single step
+		void processCell(int,int); // processes cell at grid[y][x]
+		char cellContent(int,int,string name = "blank");
 
 	public:
 		Darwin (int w = 0, int h = 0);

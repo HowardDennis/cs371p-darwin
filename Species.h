@@ -7,6 +7,7 @@ using namespace std;
 class Species {
 
 	friend class Creature;
+	friend class Darwin;
 	private:
 		//DATA
 		vector<Instruction*> i;

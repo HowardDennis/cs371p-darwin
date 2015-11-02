@@ -6,7 +6,7 @@
 using namespace std;
 
 class Creature {
-
+	friend class Darwin;
 	private:
 	//DATA	
 		Species spec;

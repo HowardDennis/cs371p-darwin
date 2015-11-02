@@ -33,6 +33,10 @@ TEST(DarwinFixture, Darwin_addCreature_1) {
 }
 
 TEST(DarwinFixture, Darwin_addCreature_2) {
+	Species s1("test species 1");
+	Species s2("test species 2");
+	Creature c1(s1,'n');
+	Creature c2(s2,'s');
 }
 
 TEST(DarwinFixture, Darwin_addCreature_3) {
