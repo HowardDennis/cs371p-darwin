@@ -20,14 +20,12 @@ using namespace std;
 
 Darwin::Darwin (int w, int h) {
 
-    vector<Creature> v(w);
-
-    //grid.resize(w, vector<Creature>(w, nullptr)); // = vector< vector<Creature>(w) >(h);
-
+    //vector<const Creature> v(w*h);
+    grid.resize(h, vector< const Creature*>(w, nullptr)); // = vector< vector<Creature>(w) >(h);
 }
 
-    void Darwin::addCreature(const Creature& c, int w, int h) {
+void Darwin::addCreature ( const Creature* c, int w, int h) {
 
-        grid[w][h] = c;
+    grid[w][h] = c;
 
-    }
+}

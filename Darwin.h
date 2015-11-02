@@ -21,13 +21,13 @@ using namespace std;
 class Darwin {
 
 	private:
-		vector < vector<Creature> > grid;
+		vector < vector<const Creature*> > grid;
 		vector < pair <int, int> > whitelist;
 		vector < pair <int, int> > next_whitelist;
 		void step(); // at beginning, refresh all creatures
 
 	public:
 		Darwin (int w = 0, int h = 0);
-		void addCreature(const Creature&, int, int);
+		void addCreature(const Creature*, int, int);
 };
 

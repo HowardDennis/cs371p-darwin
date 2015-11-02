@@ -25,9 +25,15 @@ using namespace std;
 // TestDarwin
 // -----------
 
-// ----
-// read
-// ----
 
-/*TEST(DarwinFixture, ) {
-} */
+TEST(DarwinFixture, Darwin_addCreature_1) {
+	Species s("test species");
+	Creature c(s,'n');
+	Darwin d(2,2);
+}
+
+TEST(DarwinFixture, Darwin_addCreature_2) {
+}
+
+TEST(DarwinFixture, Darwin_addCreature_3) {
+}
