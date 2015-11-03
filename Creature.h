@@ -20,6 +20,9 @@ class Creature {
         void turnLeft();
         void turnRight();
 
+		FRIEND_TEST(DarwinFixture, Darwin_Creature_default);
+
+
 	public:
 		Creature(const Species& s = Species(), char d = 0);
 		// send in information regarding area so creature can decide

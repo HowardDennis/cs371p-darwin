@@ -48,6 +48,7 @@ clean:
 	rm -f TestDarwin
 	rm -f TestDarwin.tmp
 	rm -f test
+	rm -f OtherTest
 
 config:
 	git config -l
