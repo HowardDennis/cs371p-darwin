@@ -9,8 +9,8 @@ using namespace std;
 class Instruction {
 	
 	public:
-		Instruction();
-		virtual ~Instruction();
+		Instruction(){}
+		~Instruction(){}
 
 		virtual pair<int, char> act(char, char, char, char, int, char) = 0;
 

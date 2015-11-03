@@ -1,9 +1,13 @@
 #include "Instruction.h"
 #include <cassert>
-
+#include "gtest/gtest_prod.h"
 //ACTION
 class Hop : private Instruction {
+public:
 	Hop(){}
+private:	
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Hop_act_1);
+
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
 			case 'n' : 
@@ -30,9 +34,8 @@ class Hop : private Instruction {
 					}
 				break;
 
-		}
-		assert(false);
-		pair<int, char> p = {-1,'!'};
+		};
+		pair<int, char> p = {++pc,'z'};
 		return p;
 	};
 

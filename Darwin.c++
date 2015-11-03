@@ -19,7 +19,6 @@
 using namespace std;
 
 Darwin::Darwin (int w, int h) {
-
     //vector<Creature> v(w*h);
     grid.resize(h, vector<Creature*>(w, nullptr)); // = vector< vector<Creature>(w) >(h);
 }

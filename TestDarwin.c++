@@ -14,18 +14,55 @@
 #include <sstream>  // istringtstream, ostringstream
 #include <string>   // string
 #include <utility>  // pair
-
+#include <cassert>   // assert
 #include "gtest/gtest.h"
 
 #include "Darwin.h"
 
 using namespace std;
 
+/* bottom up test methodology useful for procedural development
+ * INSTRUCTIONS:
+
+		RESPONSE CHARACTERS - what action should be taken
+			l r       //rotation
+			n e s w   //movement
+			z 	 	  // do nothing
+			o k , ;   //infection direction
+		SIGNAL CHARACTERS - inform the creature so it can decide on an action
+			m // malfactor (which mean enemy)
+			a //available
+			c //control, d next instruction
+			u //unavailable space
+//*/
+
+TEST(DarwinFixture, Darwin_Instruction_Hop_act_1){
+	Hop h;
+	int pc = 1;
+	char dir,n,e,s,w;
+	dir='n';
+	n=s=w=e='a';
+	pair<int,char> result = h.act(n, e, s, w, pc, dir);
+	ASSERT_EQ( 'n', result.second);
+	ASSERT_EQ( 2, result.first);
+}
+
+TEST(DarwinFixture, Darwin_Instruction_Hop_act_1){
+	Hop h;
+	int pc = 1;
+	char dir,n,e,s,w;
+	dir='n';
+	n=s=w=e='u';
+	pair<int,char> result = h.act(n, e, s, w, pc, dir);
+	ASSERT_EQ( 'n', result.second);
+	ASSERT_EQ( 2, result.first);
+}
+
 // -----------
 // TestDarwin
 // -----------
 
-
+/*
 TEST(DarwinFixture, Darwin_addCreature_1) {
 	Species s("test species");
 	Creature c(s,'n');
@@ -41,3 +78,4 @@ TEST(DarwinFixture, Darwin_addCreature_2) {
 
 TEST(DarwinFixture, Darwin_addCreature_3) {
 }
+//*/

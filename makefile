@@ -87,8 +87,8 @@ RunDarwin.tmp: RunDarwin
 	./RunDarwin > RunDarwin.tmp
 	diff RunDarwin.tmp RunDarwin.out
 
-TestDarwin: Darwin.h Darwin.c++ TestDarwin.c++
-	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) Darwin.c++ TestDarwin.c++ -o TestDarwin $(LDFLAGS)
+TestDarwin: Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++ Instructions.h TestDarwin.c++
+	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) $(LDFLAGS) Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++ Instructions.h TestDarwin.c++ -o TestDarwin $(LDFLAGS)
 
 TestDarwin.tmp: TestDarwin
 	$(VALGRIND) ./TestDarwin                                       >  TestDarwin.tmp 2>&1
@@ -96,6 +96,6 @@ TestDarwin.tmp: TestDarwin
 	$(GCOV) -b TestDarwin.c++ | grep -A 5 "File 'TestDarwin.c++'" >> TestDarwin.tmp
 	cat TestDarwin.tmp
 
-trivial: test.c++ Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++
-		$(CXX) $(CXXFLAGS) $(GCOVFLAGS) test.c++ Darwin.c++ Species.c++ Creature.c++ -o test
+trivial: test.c++ Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++ Instruction.c++
+		$(CXX) $(CXXFLAGS) $(GCOVFLAGS) test.c++ Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++ Instruction.c++ -o test
 		make clean

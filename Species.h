@@ -1,11 +1,11 @@
 #pragma once
-#include "Instruction.h"
+//#include "Instruction.h"   // interface for instructions
+#include "Instructions.h"  // instruction implementations
 #include <string>        // String
 #include <utility>       // pair
 using namespace std;
 
 class Species {
-
 	friend class Creature;
 	friend class Darwin;
 	private:
@@ -15,7 +15,6 @@ class Species {
 
 		//METHODS
 		pair <int, char> act(char, char, char, char, int, char);
-
 
 	public:
 		Species(string n = "null");
