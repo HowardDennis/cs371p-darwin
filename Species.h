@@ -1,7 +1,7 @@
 #pragma once
 #include "Instruction.h"
 #include <string>        // String
-
+#include <utility>       // pair
 using namespace std;
 
 class Species {
@@ -14,7 +14,7 @@ class Species {
 		string name;
 
 		//METHODS
-		char act(char, char, char, char, int, char);
+		pair <int, char> act(char, char, char, char, int, char);
 
 
 	public:

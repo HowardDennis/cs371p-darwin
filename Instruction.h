@@ -15,13 +15,3 @@ class Instruction {
 		virtual pair<int, char> act(char, char, char, char, int, char) = 0;
 
 };
-
-/*  	void hop();
-		void left();
-		void right();
-		void infect();
-		void if_empty();
-		void if_wall();
-		void if_random();
-		void if_enemy();
-		void go(); //*/

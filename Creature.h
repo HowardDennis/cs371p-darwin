@@ -1,7 +1,8 @@
 #pragma once
 
 #include "Species.h"
-#include <string>        // String
+#include <string>       // String
+#include <utility>      // pair
 
 using namespace std;
 
@@ -16,7 +17,8 @@ class Creature {
 
 	//METHODS
 		char act(char n, char e, char s, char w);  //get instruction and execute
-
+        void turnLeft();
+        void turnRight();
 
 	public:
 		Creature(const Species& s = Species(), char d = 0);

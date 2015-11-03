@@ -20,7 +20,7 @@ using namespace std;
 
 class Darwin {
 	private:
-		vector < vector<const Creature*> > grid;
+		vector < vector<Creature*> > grid;
 		vector < pair <int, int> > whitelist;
 		vector < pair <int, int> > next_whitelist;
 		void step(int n=1); // a single step
@@ -29,6 +29,6 @@ class Darwin {
 
 	public:
 		Darwin (int w = 0, int h = 0);
-		void addCreature(const Creature*, int, int);
+		void addCreature(Creature*, int, int);
 };
 

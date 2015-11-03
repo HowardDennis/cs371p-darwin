@@ -94,24 +94,24 @@ class Infect : private Instruction {
 			//m stands for malfactor, which mean enemy
 			case 'n' : 
 					if (n == 'm') { 
-						return pair<int, char> (++pc, 'w');
+						return pair<int, char> (++pc, 'o');
 					}
 				break;
 
 			case 'e' : 
 					if (e == 'm') {
-						return pair<int, char> (++pc, 'd');
+						return pair<int, char> (++pc, ';');
 					}
 				break;
 
 			case 's' : 
 					if (s == 'm') {
-						return pair<int, char> (++pc, 'x');
+						return pair<int, char> (++pc, 'l');
 					}				break;
 
 			case 'w' : 
 					if (w == 'm') {
-						return pair<int, char> (++pc, 'q');
+						return pair<int, char> (++pc, 'k');
 					}
 				break;
 
