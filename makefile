@@ -99,3 +99,6 @@ TestDarwin.tmp: TestDarwin
 trivial: test.c++ Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++ Instruction.c++
 		$(CXX) $(CXXFLAGS) $(GCOVFLAGS) test.c++ Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++ Instruction.c++ -o test
 		make clean
+
+OtherTest: Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++ Instructions.h OtherTest.c++
+	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) $(LDFLAGS) Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++ Instructions.h OtherTest.c++ -o OtherTest $(LDFLAGS)
