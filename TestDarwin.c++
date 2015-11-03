@@ -36,7 +36,7 @@ using namespace std;
 			u //unavailable space
 //*/
 
-// * INSTRUCTION - HOP - 
+// * INSTRUCTION - HOP * * * * * * * * * * * * * * * * * 
 //	 north ==============================================
 TEST(DarwinFixture, Darwin_Instruction_Hop_act_n1){ // hop
 	Hop h;
@@ -117,6 +117,91 @@ TEST(DarwinFixture, Darwin_Instruction_Hop_act_w2){ // if hop is blocked
 	n=s=e='a';
 	pair<int,char> result = h.act(n, e, s, w, pc, dir);
 	ASSERT_EQ( 'z', result.second);}
+
+// * INSTRUCTION - LEFT * * * * * * * * * * * * * * * * *
+TEST(DarwinFixture, Darwin_Instruction_Left_act){
+	Left l;
+	int pc = 1;
+	char dir,n,e,s,w;
+	dir='n';
+	n=e=s=w='?';
+	pair<int,char> result = l.act(n, e, s, w, pc, dir);
+	ASSERT_EQ( 'l', result.second);
+	ASSERT_EQ( 2, result.first);}
+
+// * INSTRUCTION - RIGHT * * * * * * * * * * * * * * * * *
+TEST(DarwinFixture, Darwin_Instruction_Right_act){
+	Right r;
+	int pc = 1;
+	char dir,n,e,s,w;
+	dir='w';
+	n=e=s=w='?';
+	pair<int,char> result = r.act(n, e, s, w, pc, dir);
+	ASSERT_EQ( 'r', result.second);
+	ASSERT_EQ( 2, result.first);}
+
+// * INSTRUCTION - INFECT * * * * * * * * * * * * * * * * *
+//	north -------------------------------------------------
+TEST(DarwinFixture, Darwin_Instruction_Infect_n){
+	Infect i;
+	int pc = 1;
+	char dir,n,e,s,w;
+	dir='n';
+	n='m';
+	s=e=w='?';
+	pair<int,char> result = i.act(n,e,s,w,pc,dir);
+	ASSERT_EQ('o',result.second);
+	ASSERT_EQ(2,result.first);
+	n='a';
+	result = i.act(n,e,s,w,pc,dir);
+	ASSERT_EQ('z',result.second);
+}
+//	south -------------------------------------------------
+TEST(DarwinFixture, Darwin_Instruction_Infect_s){
+	Infect i;
+	int pc = 1;
+	char dir,n,e,s,w;
+	dir='s';
+	s='m';
+	n=e=w='?';
+	pair<int,char> result = i.act(n,e,s,w,pc,dir);
+	ASSERT_EQ(',',result.second);
+	ASSERT_EQ(2,result.first);
+	s='a';
+	result = i.act(n,e,s,w,pc,dir);
+	ASSERT_EQ('z',result.second);
+}
+//	east -------------------------------------------------
+TEST(DarwinFixture, Darwin_Instruction_Infect_e){
+	Infect i;
+	int pc = 1;
+	char dir,n,e,s,w;
+	dir='e';
+	e='m';
+	s=n=w='?';
+	pair<int,char> result = i.act(n,e,s,w,pc,dir);
+	ASSERT_EQ(';',result.second);
+	ASSERT_EQ(2,result.first);
+	e='a';
+	result = i.act(n,e,s,w,pc,dir);
+	ASSERT_EQ('z',result.second);
+}
+//	west -------------------------------------------------
+TEST(DarwinFixture, Darwin_Instruction_Infect_w){
+	Infect i;
+	int pc = 1;
+	char dir,n,e,s,w;
+	dir='w';
+	w='m';
+	s=e=n='?';
+	pair<int,char> result = i.act(n,e,s,w,pc,dir);
+	ASSERT_EQ('k',result.second);
+	ASSERT_EQ(2,result.first);
+	w='a';
+	result = i.act(n,e,s,w,pc,dir);
+	ASSERT_EQ('z',result.second);
+}
+
 // -----------
 // TestDarwin
 // -----------

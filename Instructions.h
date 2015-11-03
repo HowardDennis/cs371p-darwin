@@ -49,7 +49,10 @@ private:
 };
 
 class Left : private Instruction {
+public:
 	Left(){}
+private:
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Left_act);
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 /*
 		switch(dir) {
@@ -78,6 +81,7 @@ class Left : private Instruction {
 
 class Right : private Instruction {
 	Right(){}
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Right_act);
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		/*
 		switch(dir) {
@@ -99,13 +103,17 @@ class Right : private Instruction {
 
 		}
 		//*/
-		return pair<int,char>(++pc,'l');
+		return pair<int,char>(++pc,'r');
 	};
 
 };
 
 class Infect : private Instruction {
 	Infect(){}
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Infect_n);
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Infect_s);
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Infect_e);
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Infect_w);
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
 			//m stands for malfactor, which mean enemy
@@ -123,16 +131,17 @@ class Infect : private Instruction {
 
 			case 's' : 
 					if (s == 'm') {
-						return pair<int, char> (++pc, 'l');
-					}				break;
+						return pair<int, char> (++pc, ',');
+					}
+					break;
 
 			case 'w' : 
 					if (w == 'm') {
 						return pair<int, char> (++pc, 'k');
 					}
 				break;
-
 		}
+		return pair<int,char>(++pc,'z');
 	};
 
 };
