@@ -6,7 +6,14 @@ class Hop : private Instruction {
 public:
 	Hop(){}
 private:	
-	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Hop_act_1);
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Hop_act_n1);
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Hop_act_n2);
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Hop_act_s1);
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Hop_act_s2);
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Hop_act_w1);
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Hop_act_w2);
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Hop_act_e1);
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Hop_act_e2);
 
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
@@ -44,6 +51,7 @@ private:
 class Left : private Instruction {
 	Left(){}
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
+/*
 		switch(dir) {
 			case 'n' : 
 					return pair<int, char> (++pc, 'w');
@@ -62,14 +70,16 @@ class Left : private Instruction {
 				break;
 
 		}
-
-	};
+//*/
+		return pair<int,char>(++pc,'l');
+	}
 
 };
 
 class Right : private Instruction {
 	Right(){}
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
+		/*
 		switch(dir) {
 			case 'n' : 
 					return pair<int, char> (++pc, 'e');
@@ -88,6 +98,8 @@ class Right : private Instruction {
 				break;
 
 		}
+		//*/
+		return pair<int,char>(++pc,'l');
 	};
 
 };

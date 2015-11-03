@@ -36,28 +36,87 @@ using namespace std;
 			u //unavailable space
 //*/
 
-TEST(DarwinFixture, Darwin_Instruction_Hop_act_1){
+// * INSTRUCTION - HOP - 
+//	 north ==============================================
+TEST(DarwinFixture, Darwin_Instruction_Hop_act_n1){ // hop
 	Hop h;
 	int pc = 1;
 	char dir,n,e,s,w;
 	dir='n';
-	n=s=w=e='a';
+	n='a';
+	s=w=e='u';
 	pair<int,char> result = h.act(n, e, s, w, pc, dir);
 	ASSERT_EQ( 'n', result.second);
-	ASSERT_EQ( 2, result.first);
-}
-
-TEST(DarwinFixture, Darwin_Instruction_Hop_act_1){
+	ASSERT_EQ( 2, result.first);}
+TEST(DarwinFixture, Darwin_Instruction_Hop_act_n2){ // if hop is blocked
 	Hop h;
 	int pc = 1;
 	char dir,n,e,s,w;
 	dir='n';
-	n=s=w=e='u';
+	n='u';
+	s=w=e='a';
 	pair<int,char> result = h.act(n, e, s, w, pc, dir);
-	ASSERT_EQ( 'n', result.second);
-	ASSERT_EQ( 2, result.first);
-}
-
+	ASSERT_EQ( 'z', result.second);}
+//	 south ==============================================
+TEST(DarwinFixture, Darwin_Instruction_Hop_act_s1){ // hop
+	Hop h;
+	int pc = 1;
+	char dir,n,e,s,w;
+	dir='s';
+	s='a';
+	n=w=e='u';
+	pair<int,char> result = h.act(n, e, s, w, pc, dir);
+	ASSERT_EQ( 's', result.second);
+	ASSERT_EQ( 2, result.first);}
+TEST(DarwinFixture, Darwin_Instruction_Hop_act_s2){ // if hop is blocked
+	Hop h;
+	int pc = 1;
+	char dir,n,e,s,w;
+	dir='s';
+	s='u';
+	n=w=e='a';
+	pair<int,char> result = h.act(n, e, s, w, pc, dir);
+	ASSERT_EQ( 'z', result.second);}
+//	 east ==============================================
+TEST(DarwinFixture, Darwin_Instruction_Hop_act_e1){ // hop
+	Hop h;
+	int pc = 1;
+	char dir,n,e,s,w;
+	dir='e';
+	e='a';
+	n=s=w='u';
+	pair<int,char> result = h.act(n, e, s, w, pc, dir);
+	ASSERT_EQ( 'e', result.second);
+	ASSERT_EQ( 2, result.first);}
+TEST(DarwinFixture, Darwin_Instruction_Hop_act_e2){ // if hop is blocked
+	Hop h;
+	int pc = 1;
+	char dir,n,e,s,w;
+	dir='e';
+	e='u';
+	n=s=w='a';
+	pair<int,char> result = h.act(n, e, s, w, pc, dir);
+	ASSERT_EQ( 'z', result.second);}
+//	 west ==============================================
+TEST(DarwinFixture, Darwin_Instruction_Hop_act_w1){ // hop
+	Hop h;
+	int pc = 1;
+	char dir,n,e,s,w;
+	dir='w';
+	w='a';
+	n=s=e='u';
+	pair<int,char> result = h.act(n, e, s, w, pc, dir);
+	ASSERT_EQ( 'w', result.second);
+	ASSERT_EQ( 2, result.first);}
+TEST(DarwinFixture, Darwin_Instruction_Hop_act_w2){ // if hop is blocked
+	Hop h;
+	int pc = 1;
+	char dir,n,e,s,w;
+	dir='w';
+	w='u';
+	n=s=e='a';
+	pair<int,char> result = h.act(n, e, s, w, pc, dir);
+	ASSERT_EQ( 'z', result.second);}
 // -----------
 // TestDarwin
 // -----------
