@@ -130,7 +130,7 @@ char Darwin::cellContent(int x, int y, string name){
 	if( grid[y][x] == nullptr )
 		return 'a';
 	if( name == grid[y][x]->spec.name )
-		return 'u';
+		return 'f';
 	return 'e';
 }
 

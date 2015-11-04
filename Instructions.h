@@ -1,6 +1,21 @@
 #include "Instruction.h"
 #include <cassert>
 #include "gtest/gtest_prod.h"
+
+/* INSTRUCTIONS:
+		RESPONSE CHARACTERS - what action should be taken
+			l r       //rotation
+			n e s w   //movement
+			z 	 	  // do nothing
+			o k , ;   //infection direction
+		SIGNAL CHARACTERS - inform the creature so it can decide on an action
+			m // malfactor (enemy)
+            f // friend
+			a //available
+			c //control, d next instruction
+			u //unavailable space
+//*/
+
 //ACTION
 class Hop : private Instruction {
 public:
@@ -147,10 +162,15 @@ class Infect : private Instruction {
 };
 
 //CONTROL
-
 class If_Empty : private Instruction {
 	int num;
-	If_Empty(){}
+
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifempty_n);
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifempty_s);
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifempty_e);
+	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifempty_w);
+
+	If_Empty(int n): num(n){}
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
 			case 'n' : 
@@ -190,17 +210,25 @@ class If_Empty : private Instruction {
 				break;
 
 		}
-	};
+		assert(false); // if this is reached, an invalid char made it in somehow
+		return pair<int,char>(++pc,'c');
+	}
 
 };
 
 class If_Wall : private Instruction {
 	int num;
+    
+    FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifwall_n);
+    FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifwall_s);
+    FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifwall_e);
+    FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifwall_w);
+    
 	If_Wall(int _n) : num(_n) {}
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
 			case 'n' : 
-					if (n != 'a') {
+					if (n == 'u') {
 						return pair<int, char> (num, 'c');
 					}
 
@@ -209,7 +237,7 @@ class If_Wall : private Instruction {
 				break;
 
 			case 'e' : 
-					if (e != 'a') {
+					if (e == 'u') {
 						return pair<int, char> (num, 'c');
 					}
 
@@ -218,7 +246,7 @@ class If_Wall : private Instruction {
 				break;
 
 			case 's' : 
-					if (s != 'a') {
+					if (s == 'u') {
 						return pair<int, char> (num, 'c');
 					}		
 
@@ -227,21 +255,25 @@ class If_Wall : private Instruction {
 				break;
 				
 			case 'w' : 
-					if (w != 'a') {
+					if (w == 'u') {
 						return pair<int, char> (num, 'c');
 					}
 
 					return pair<int, char> (++pc, 'c');
-
 				break;
-
 		}
-	};
+        assert(false);//this should not happen
+        return pair<int,char> (666,'!');
+        
+	}
 
 };
 
 class If_Random : private Instruction {
 	int num;
+    
+    FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifrandom);
+    
 	If_Random(int _n) : num(_n) {}
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		int r = rand();
@@ -257,13 +289,19 @@ class If_Random : private Instruction {
 
 class If_Enemy : private Instruction {
 	int num;
+    
+    FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifenemy_n);
+    FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifenemy_s);
+    FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifenemy_e);
+    FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifenemy_w);
+    
 	If_Enemy(int _n) : num(_n) {}
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
 			//m stands for malfactor, which mean enemy
 			case 'n' : 
 					if (n == 'm') { 
-						return pair<int, char> (num, 'w');
+						return pair<int, char> (num, 'c');
 					}
 					return pair<int, char> (++pc, 'c');
 				break;
@@ -290,12 +328,17 @@ class If_Enemy : private Instruction {
 				break;
 
 		}
-	};
+        assert(false); // should not occur
+        return pair<int,char> (666,'!');
+	}
 
 };
 
 class Go : private Instruction {
 	int num;
+    
+    FRIEND_TEST(DarwinFixture, Darwin_Instruction_Go);
+    
 	Go(int _n) : num(_n) {}
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		return pair<int, char> (num, 'c');
