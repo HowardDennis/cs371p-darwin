@@ -151,12 +151,12 @@ void Darwin::addCreature ( Creature* c, int w, int h) {
     grid[h][w] = c;
 }
 
-void Darwin::print(int turn) {
-    printf("*** Darwin %dx%d ***\n", (int)grid.size(), (int)grid[0].size());
-    printf("Turn = %d.\n", turn);
+void Darwin::print(ostream& w, int turn) {
+    //printf("*** Darwin %dx%d ***\n", (int)grid.size(), (int)grid[0].size());
+    w << "Turn = " << turn << ".\n";
     unsigned char i = 0;
     unsigned char p = 0;
-    cout << "  ";
+    w << "  ";
     while (p < grid[0].size()) {
         //The following if statements are to keep the printed indicies numbers and letters
         if (i == 10) {
@@ -168,11 +168,11 @@ void Darwin::print(int turn) {
         if (i == 74) {
             i = 0;
         }
-        cout << char('0' + i);
+        w << char('0' + i);
         ++i;
         ++p;
     }
-    endl(cout);
+    endl(w);
     i = 0;
     p = 0;
     while (p < grid.size()) {
@@ -185,13 +185,13 @@ void Darwin::print(int turn) {
         if (i == 74) {
             i = 0;
         }
-        cout << char('0' + i) << " ";
+        w << char('0' + i) << " ";
         unsigned int j = 0;
         while (j < grid[0].size()) {
-            (grid[p][j] == nullptr) ? cout << "." : cout << grid[p][j]->spec.name[0];  //change
+            (grid[p][j] == nullptr) ? w << "." : w << grid[p][j]->spec.name[0];  //change
             ++j;
         }
-        endl(cout);
+        endl(w);
         ++i;
         ++p;
     }

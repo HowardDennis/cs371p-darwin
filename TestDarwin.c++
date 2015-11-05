@@ -610,6 +610,7 @@ TEST(DarwinFixture, Darwin_construct_args_1){
     ASSERT_EQ(1, d.grid.size());
     ASSERT_EQ(10, (d.grid[0]).size());
 }
+<<<<<<< HEAD
 
 TEST(DarwinFixture, Darwin_construct_args_2){
     Darwin d(1300,1700);
@@ -671,6 +672,53 @@ TEST(DarwinFixture, Darwin_cell_content_1){
     d.addCreature(&kangaroo,0,0);
     char result = d.cellContent(0, 0, name);
     ASSERT_EQ('f',result);
+=======
+TEST(DarwinFixture, Darwin_print_default){
+    Darwin d(1, 1);
+    ostringstream w;
+    d.print(w);
+    ASSERT_EQ("Turn = 0.\n  0\n0 .\n", w.str());
+}
+TEST(DarwinFixture, Darwin_print_bigger){
+    Darwin d(5, 5);
+    ostringstream w;
+    d.print(w);
+    ASSERT_EQ("Turn = 0.\n  01234\n0 .....\n1 .....\n2 .....\n3 .....\n4 .....\n", w.str());
+}
+TEST(DarwinFixture, Darwin_print_creatures){
+    Darwin d(4, 4);
+    Species s1("test species 1");
+	Species s2("d");
+	Creature c1(s1,'n');
+	Creature c2(s2,'s');
+	d.addCreature(&c1, 1, 1);
+	d.addCreature(&c2, 3, 3);
+    ostringstream w;
+    d.print(w);
+    ASSERT_EQ("Turn = 0.\n  0123\n0 ....\n1 .t..\n2 ....\n3 ...d\n", w.str());
+}
+TEST(DarwinFixture, Darwin_full_of_creatures){
+    Darwin d(4, 4);
+    Creature c;
+	int i = 0;
+	while (i < 4) {
+		int j = 0;
+		while (j < 4) {
+			d.addCreature(&c, i, j);
+			++j;
+		}
+		++i;
+	}
+    ostringstream w;
+    d.print(w);
+    ASSERT_EQ("Turn = 0.\n  0123\n0 nnnn\n1 nnnn\n2 nnnn\n3 nnnn\n", w.str());
+}
+/*
+TEST(DarwinFixture, Darwin_construct_args_1){
+    Darwin d(10);
+    ASSERT_EQ(1, d.grid.size());
+    ASSERT_EQ(10, (d.grid[0]).size());
+>>>>>>> 31dbea202e667c3ab0fab6772a9d4071b5dda941
 }
 TEST(DarwinFixture, Darwin_cell_content_2){
     string name = "Marsupial";
