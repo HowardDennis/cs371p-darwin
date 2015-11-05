@@ -26,10 +26,13 @@ class Darwin {
 		void step(int n=1); // a single step
 		void processCell(int,int); // processes cell at grid[y][x]
 		char cellContent(int,int,string name = "blank");
+        
+        FRIEND_TEST(DarwinFixture, Darwin_construct_default);
+        FRIEND_TEST(DarwinFixture, Darwin_construct_args_1);
 
 	public:
-		Darwin (int w = 0, int h = 0);
+		Darwin (int w = 1, int h = 1); // default is 1x1
 		void addCreature(Creature*, int, int);
-		void print();
+        void print(int turn=0);
 };
 

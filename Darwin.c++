@@ -139,7 +139,7 @@ void Darwin::addCreature ( Creature* c, int w, int h) {
     grid[w][h] = c;
 }
 
-void Darwin::print(int turn = 0) {
+void Darwin::print(int turn) {
     printf("*** Darwin %dx%d ***\n", (int)grid.size(), (int)grid[0].size());
     printf("Turn = %d.\n", turn);
     unsigned char i = 0;

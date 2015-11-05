@@ -36,5 +36,5 @@ class Creature {
 
 	public:
 		Creature(const Species& s = Species(), char d = '?');
-		// send in information regarding area so creature can decide
+		void print(int turn = 0);
 };

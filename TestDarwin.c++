@@ -599,4 +599,31 @@ TEST(DarwinFixture, Darwin_Creature_right_3){
     cr.turnRight();
     ASSERT_EQ(cr.dir,'w');
 }
+// DARWIN
+// * Darwin Constructors * * * * * * * * * * * * * * * * * * * *
+TEST(DarwinFixture, Darwin_construct_default){
+    Darwin d;
+    ASSERT_EQ(1, d.grid.size());
+}
+TEST(DarwinFixture, Darwin_construct_args_1){
+    Darwin d(10);
+    ASSERT_EQ(1, d.grid.size());
+    ASSERT_EQ(10, (d.grid[0]).size());
+}
+/*
+TEST(DarwinFixture, Darwin_construct_args_1){
+    Darwin d(10);
+    ASSERT_EQ(1, d.grid.size());
+    ASSERT_EQ(10, (d.grid[0]).size());
+}
+TEST(DarwinFixture, Darwin_construct_args_1){
+    Darwin d(10);
+    ASSERT_EQ(1, d.grid.size());
+    ASSERT_EQ(10, (d.grid[0]).size());
+}
+TEST(DarwinFixture, Darwin_construct_args_1){
+    Darwin d(10);
+    ASSERT_EQ(1, d.grid.size());
+    ASSERT_EQ(10, (d.grid[0]).size());
+}
 //*/
