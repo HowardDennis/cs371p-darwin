@@ -16,7 +16,7 @@
 #include <utility>  // pair
 #include "Creature.h"
 
-#define DEBUG true
+#define DEBUG false
 
 using namespace std;
 

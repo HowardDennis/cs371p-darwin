@@ -6,7 +6,7 @@
 #include <iostream>         // cout, endl
 using namespace std;
 
-#define DEBUG true
+#define DEBUG false
 
 class Species {
 	friend class Creature;

@@ -817,9 +817,10 @@ TEST(DarwinFixture, Darwin_step_1){
     
     Hop i0;
     Go i1(0);
-    
+
     hopper.addInstruction(&i0);
     hopper.addInstruction(&i1);
+    
                                 //   0 1 2 3
     Creature h1(hopper, 'n');   // 0 - - - -
     Creature h2(hopper, 's');   // 1 - 1 3 -

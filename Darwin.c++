@@ -10,7 +10,7 @@
 
 #include <cassert>  // assert
 #include <iostream> // endl, istream, ostream
-#include <sstream>  // istringstream
+#include <sstream>  // istringstream, ostringstream
 #include <string>   // getline, string
 #include <utility>  // make_pair, pair
 #include <stdio.h>  // printf
@@ -26,20 +26,36 @@ Darwin::Darwin (int w, int h) {
 
 
 void Darwin::step(int n){
+    if(DEBUG)
+        cout <<"Stepping "<<n<<" times over ";
 	int w= grid[0].size();
 	int h= grid.size();
+    if(DEBUG)
+        cout <<w<<"x"<<h<<" grid"<<endl;
+
     Creature* cp;
+    if(DEBUG)
+        print(cout,0);
 	for(int i=0; i < n; ++i){  // for every step
 		for( int j=0; j < h; ++j){  // for every row (iterate across y)
 			for( int k=0; k < w; ++k){ //for every element in the row (iterate across x)
+                if(DEBUG){
+                    cout <<"----checking grid["<<j<<"]["<<k<<"]=";
+                    //if(cp)
+                        //print(cout);
+                }
                 cp = grid[j][k];
+                if(DEBUG)
+                    cout << (long int)cp << endl;
 				if(cp!=nullptr && !(cp->acted) ) // if its an active creature
                     processCell(k,j);
-                if(cp->acted) // if after processing the creature has acted, can reset
+                if(cp!=nullptr && cp->acted) // if after processing the creature has acted, can reset
                     cp->acted=false;  // since it will not return in this pass
 			}
 		}
         cp=nullptr;
+        if(DEBUG)
+            print(cout,i+1);
 	}
 }
 
@@ -53,42 +69,50 @@ void Darwin::processCell(int x, int y){
 	string name=(creature->spec).name;
 	// north cell
     if(DEBUG)
-        cout << "north cell-";
+        cout << " north cell-";
 	if(y==0) { // if its the top row
 		n='u';
 	} else{
 		n=cellContent(x,y-1,name);
+        if(DEBUG)
+            cout << " -returned n="<< n << endl;
 	}
 	// south cell
     if(DEBUG)
-        cout << "south cell-";
+        cout << " south cell-";
 	if(y== (int)grid.size()-1) { // if its the bottom row
 		s='u';
 	} else{
 		s=cellContent(x,y+1,name);
+        if(DEBUG)
+            cout << " -returned s="<< s << endl;
 	}
 	//west cell
     if(DEBUG)
-        cout << "west cell-";
+        cout << " west cell-";
 	if( x==0 ) {
 		w='u';
 	} else {
 		w=cellContent(x-1,y,name);
+        if(DEBUG)
+            cout << " -returned w="<< w << endl;
 	}
 	//east cell
     if(DEBUG)
-        cout << "east cell" << endl;
+        cout << " east cell-";
 	if(x== (int)(grid[0].size())-1) {
 		e='u';
 	} else {
 		e=cellContent(x+1,y,name);
+        if(DEBUG)
+            cout << " -returned e="<< e << endl;
 	}
 	// act on the gathered data
     if(DEBUG)
-        cout << "gathering response...";
-    char response = creature->act(n,s,e,w);
+        cout << "  gathering response...";
+    char response = creature->act(n,e,s,w);
     if(DEBUG)
-        cout << "response gotten: '" << response << "'" << endl;
+        cout << "  response gotten: '" << response << "'" << endl;
     switch(response){
         //rotate
         case('l'):
@@ -113,7 +137,7 @@ void Darwin::processCell(int x, int y){
             break;
         case('e'):
             creature->acted=true;   //since it is moving forward in the analysis queue
-            grid[y+1][x+1]=creature; //write pointer to new location
+            grid[y][x+1]=creature; //write pointer to new location
             grid[y][x]=nullptr;     //write nullpointer to old location
             break;
         //infect
@@ -138,7 +162,7 @@ void Darwin::processCell(int x, int y){
 
 char Darwin::cellContent(int x, int y, string name){
     if(DEBUG)
-        cout << "checking cell content (" <<x<<", "<<y<<", "<<name<<")"<<endl;
+        cout << "  checking cell content (" <<x<<", "<<y<<", "<<name<<"): "<<(long int)(grid[y][x])%100<<endl;
 	if( grid[y][x] == nullptr )
 		return 'a';
 	if( name == grid[y][x]->spec.name )

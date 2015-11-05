@@ -7,7 +7,7 @@
 
 using namespace std;
 
-#define DEBUG true
+#define DEBUG false
 
 class Creature {
 	friend class Darwin;
