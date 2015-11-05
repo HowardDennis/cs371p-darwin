@@ -10,22 +10,12 @@ pair <int, char> Species::act(char n, char e, char s, char w, int pc, char dir) 
 		result = (i[pc])->act(n,e,s,w,pc,dir);
         if(result.second!='c')
             acted=true;
+        else
+            pc=result.first;
 	}
-	return result;//change me
+	return result;
 }
 
 void Species::addInstruction(Instruction* inst) {
 	i.push_back(inst);
 }
-
-/*
-RESPONSE CHARACTERS - what action should be taken
-	l r       //rotation
-	n e s w   //movement
-	o k , ;   //infection direction
-SIGNAL CHARACTERS - inform the creature so it can decide on an action
-	m // malfactor (which mean enemy)
-	a //available
-	c //control, d next instruction
-	u //unavailable space
-//*/

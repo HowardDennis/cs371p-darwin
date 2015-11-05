@@ -29,7 +29,11 @@ private:
 	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Hop_act_w2);
 	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Hop_act_e1);
 	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Hop_act_e2);
-
+    
+    FRIEND_TEST(DarwinFixture, Darwin_Species_addInstruction);
+    FRIEND_TEST(DarwinFixture, Darwin_Species_act_1);
+    FRIEND_TEST(DarwinFixture, Darwin_Species_act_2);
+    
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
 			case 'n' : 
@@ -68,6 +72,9 @@ public:
 	Left(){}
 private:
 	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Left_act);
+    
+    FRIEND_TEST(DarwinFixture, Darwin_Species_act_3);
+    
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 /*
 		switch(dir) {
@@ -129,6 +136,10 @@ class Infect : private Instruction {
 	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Infect_s);
 	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Infect_e);
 	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Infect_w);
+    
+    FRIEND_TEST(DarwinFixture, Darwin_Species_addInstruction);
+    FRIEND_TEST(DarwinFixture, Darwin_Species_act_2);
+    
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
 			//m stands for malfactor, which mean enemy
@@ -295,6 +306,8 @@ class If_Enemy : private Instruction {
     FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifenemy_e);
     FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifenemy_w);
     
+    FRIEND_TEST(DarwinFixture, Darwin_Species_act_3);
+    
 	If_Enemy(int _n) : num(_n) {}
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
@@ -324,7 +337,7 @@ class If_Enemy : private Instruction {
 					if (w == 'm') {
 						return pair<int, char> (num, 'c');
 					}
-					return pair<int, char> (++pc, 'c');
+					return pair <int, char> (++pc, 'c');
 				break;
 
 		}
@@ -338,6 +351,11 @@ class Go : private Instruction {
 	int num;
     
     FRIEND_TEST(DarwinFixture, Darwin_Instruction_Go);
+    
+    FRIEND_TEST(DarwinFixture, Darwin_Species_addInstruction);
+    FRIEND_TEST(DarwinFixture, Darwin_Species_act_1);
+    FRIEND_TEST(DarwinFixture, Darwin_Species_act_2);
+    FRIEND_TEST(DarwinFixture, Darwin_Species_act_3);
     
 	Go(int _n) : num(_n) {}
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){

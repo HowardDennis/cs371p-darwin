@@ -37,7 +37,6 @@ using namespace std;
 			c //control, d next instruction
 			u //unavailable space (wall)
 //*/
-
 // * INSTRUCTION - HOP * * * * * * * * * * * * * * * * * 
 TEST(DarwinFixture, Darwin_Instruction_Hop_act_n1){ // hop
 	Hop h;
@@ -406,6 +405,86 @@ TEST(DarwinFixture, Darwin_Instruction_Go){
     w=s=n=e='?';
     pair<int,char> result = g.act(n,e,s,w,pc,dir);
     ASSERT_EQ(result, (pair<int,char>(num,'c')));
+}
+
+// SPECIES
+TEST(DarwinFixture, Darwin_Species_default) {
+	Species c;
+	ASSERT_EQ(c.name, "null");
+}
+TEST(DarwinFixture, Darwin_Species_named) {
+	Species c("pass");
+	ASSERT_EQ(c.name, "pass");
+}
+TEST(DarwinFixture, Darwin_Species_addInstruction) {
+	Species c;
+    Hop i1 = Hop();
+    Go i2 = Go(5);
+    Infect i3 = Infect();
+    c.addInstruction(&i1);
+    c.addInstruction(&i2);
+	ASSERT_EQ((c.i).size(),2);
+    ASSERT_EQ(((Go*)(c.i[1]))->num,5);
+}
+TEST(DarwinFixture, Darwin_Species_act_1) {
+    Species sp;
+    Hop i1;
+    Go i2(0);
+    sp.addInstruction(&i1);
+    sp.addInstruction(&i2);
+    
+    char dir,n,s,e,w;
+    int pc=0;
+    dir='n';
+    n=s=e=w='a';
+    pair<int, char> result = sp.act(n, e, s, w, pc, dir);
+    ASSERT_EQ(result,( pair<int,char>( 1, 'n' ) ));
+    result = sp.act(n, e, s, w, pc, dir);
+    ASSERT_EQ(result,( pair<int,char>( 1, 'n' ) ));
+}
+TEST(DarwinFixture, Darwin_Species_act_2) {
+    Species sp;
+    Go i0(2);
+    Hop i1;
+    Infect i2;
+    sp.addInstruction(&i0);
+    sp.addInstruction(&i1);
+    sp.addInstruction(&i2);
+    
+    char dir,n,s,e,w;
+    int pc=0;
+    dir='n';
+    n=s=e=w='m';
+    pair<int, char> result = sp.act(n, e, s, w, pc, dir);
+    ASSERT_EQ(result,( pair<int,char>( 3, 'o' ) ));
+    n='a';
+    result = sp.act(n, e, s, w, pc, dir);
+    ASSERT_EQ(result,( pair<int,char>( 3, 'z' ) ));
+}
+
+TEST(DarwinFixture, Darwin_Species_act_3) {
+    Species sp;
+    Go i0(2);
+    If_Enemy i1(3);
+    Go i2(1);
+    Left i3;
+    sp.addInstruction(&i0);
+    sp.addInstruction(&i1);
+    sp.addInstruction(&i2);
+    sp.addInstruction(&i3);
+    
+    char dir,n,s,e,w;
+    int pc=0;
+    dir='s';
+    n=s=e=w='m';
+    pair<int, char> result = sp.act(n, e, s, w, pc, dir);
+    ASSERT_EQ(result,( pair<int,char>( 3, 'l' ) ));
+}
+
+/*
+TEST(DarwinFixture, Darwin_Species_named) {
+	Species c("pass");
+	ASSERT_EQ(c.name, "pass");
 }
 /*
 TEST(DarwinFixture, Darwin_addCreature_1) {

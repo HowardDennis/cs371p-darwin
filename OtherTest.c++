@@ -41,7 +41,6 @@ using namespace std;
 // TestDarwin
 // -----------
 
-
 TEST(DarwinFixture, Darwin_Species_default) {
 	Species c;
 	ASSERT_EQ(c.name, "null");
