@@ -33,6 +33,6 @@ class Darwin {
 	public:
 		Darwin (int w = 1, int h = 1); // default is 1x1
 		void addCreature(Creature*, int, int);
-        void print(int turn=0);
+        void print(ostream& w, int turn=0);
 };
 
