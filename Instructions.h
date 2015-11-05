@@ -35,6 +35,8 @@ private:
     FRIEND_TEST(DarwinFixture, Darwin_Species_act_1);
     FRIEND_TEST(DarwinFixture, Darwin_Species_act_2);
     FRIEND_TEST(DarwinFixture, Darwin_Creature_act_3);
+    
+    FRIEND_TEST(DarwinFixture, Darwin_process_cell_3);
         
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
@@ -80,6 +82,9 @@ private:
     FRIEND_TEST(DarwinFixture, Darwin_Creature_act_1);
     FRIEND_TEST(DarwinFixture, Darwin_Creature_act_2);
     
+    FRIEND_TEST(DarwinFixture, Darwin_process_cell_1);
+    FRIEND_TEST(DarwinFixture, Darwin_process_cell_2);
+    
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 /*
 		switch(dir) {
@@ -109,6 +114,9 @@ private:
 class Right : private Instruction {
 	Right(){}
 	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Right_act);
+    
+    FRIEND_TEST(DarwinFixture, Darwin_process_cell_3);
+    
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		/*
 		switch(dir) {
@@ -147,6 +155,7 @@ class Infect : private Instruction {
     
     FRIEND_TEST(DarwinFixture, Darwin_Creature_act_1);
     FRIEND_TEST(DarwinFixture, Darwin_Creature_act_2);
+    FRIEND_TEST(DarwinFixture, Darwin_process_cell_2);
     
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
@@ -188,6 +197,8 @@ class If_Empty : private Instruction {
 	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifempty_s);
 	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifempty_e);
 	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifempty_w);
+    
+    FRIEND_TEST(DarwinFixture, Darwin_process_cell_3);
 
 	If_Empty(int n): num(n){}
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
@@ -371,6 +382,11 @@ class Go : private Instruction {
     FRIEND_TEST(DarwinFixture, Darwin_Creature_act_1);
     FRIEND_TEST(DarwinFixture, Darwin_Creature_act_2);
     FRIEND_TEST(DarwinFixture, Darwin_Creature_act_3);
+    
+    FRIEND_TEST(DarwinFixture, Darwin_process_cell_1);
+    FRIEND_TEST(DarwinFixture, Darwin_process_cell_2);
+    
+    FRIEND_TEST(DarwinFixture, Darwin_process_cell_3);
     
 	Go(int _n) : num(_n) {}
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){

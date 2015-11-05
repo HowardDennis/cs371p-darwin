@@ -45,41 +45,51 @@ void Darwin::step(int n){
 }
 
 void Darwin::processCell(int x, int y){
+
+    if(DEBUG)
+        cout << "processing cell("<<x<<", "<<y<<")" << endl;
+
 	char n,s,w,e;
     Creature* creature = grid[y][x];
-	string name="";
-	name = (creature->spec).name;
+	string name=(creature->spec).name;
 	// north cell
+    if(DEBUG)
+        cout << "north cell-";
 	if(y==0) { // if its the top row
 		n='u';
 	} else{
 		n=cellContent(x,y-1,name);
 	}
 	// south cell
+    if(DEBUG)
+        cout << "south cell-";
 	if(y== (int)grid.size()-1) { // if its the bottom row
 		s='u';
 	} else{
 		s=cellContent(x,y+1,name);
 	}
 	//west cell
+    if(DEBUG)
+        cout << "west cell-";
 	if( x==0 ) {
 		w='u';
 	} else {
 		w=cellContent(x-1,y,name);
 	}
 	//east cell
-	if( x== (int)(grid[0].size())-1 ) {
+    if(DEBUG)
+        cout << "east cell" << endl;
+	if(x== (int)(grid[0].size())-1) {
 		e='u';
 	} else {
 		e=cellContent(x+1,y,name);
 	}
 	// act on the gathered data
+    if(DEBUG)
+        cout << "gathering response...";
     char response = creature->act(n,s,e,w);
-/* RESPONSE CHARACTERS - what action should be taken
-	l r   //rotation
-	n e s w    //movement
-	o k , ;    //infection direction
-//*/    
+    if(DEBUG)
+        cout << "response gotten: '" << response << "'" << endl;
     switch(response){
         //rotate
         case('l'):
@@ -128,15 +138,17 @@ void Darwin::processCell(int x, int y){
 }
 
 char Darwin::cellContent(int x, int y, string name){
+    if(DEBUG)
+        cout << "checking cell content (" <<x<<", "<<y<<", "<<name<<")"<<endl;
 	if( grid[y][x] == nullptr )
 		return 'a';
 	if( name == grid[y][x]->spec.name )
 		return 'f';
-	return 'e';
+	return 'm';
 }
 
 void Darwin::addCreature ( Creature* c, int w, int h) {
-    grid[w][h] = c;
+    grid[h][w] = c;
 }
 
 void Darwin::print(int turn) {

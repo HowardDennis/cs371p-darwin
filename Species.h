@@ -6,6 +6,8 @@
 #include <iostream>         // cout, endl
 using namespace std;
 
+#define DEBUG true
+
 class Species {
 	friend class Creature;
 	friend class Darwin;
@@ -37,6 +39,15 @@ class Species {
         FRIEND_TEST(DarwinFixture, Darwin_Creature_right_1);
         FRIEND_TEST(DarwinFixture, Darwin_Creature_right_2);
         FRIEND_TEST(DarwinFixture, Darwin_Creature_right_3);
+        
+        FRIEND_TEST(DarwinFixture, Darwin_add_creature_1);
+        FRIEND_TEST(DarwinFixture, Darwin_add_creature_2);
+        FRIEND_TEST(DarwinFixture, Darwin_add_creature_3);
+        FRIEND_TEST(DarwinFixture, Darwin_cell_content_1);
+        FRIEND_TEST(DarwinFixture, Darwin_cell_content_2);
+        FRIEND_TEST(DarwinFixture, Darwin_process_cell_1);
+        FRIEND_TEST(DarwinFixture, Darwin_process_cell_2);
+        FRIEND_TEST(DarwinFixture, Darwin_process_cell_3);
         
 	public:
 		Species(string n = "null");

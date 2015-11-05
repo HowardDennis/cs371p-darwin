@@ -610,20 +610,163 @@ TEST(DarwinFixture, Darwin_construct_args_1){
     ASSERT_EQ(1, d.grid.size());
     ASSERT_EQ(10, (d.grid[0]).size());
 }
-/*
-TEST(DarwinFixture, Darwin_construct_args_1){
-    Darwin d(10);
-    ASSERT_EQ(1, d.grid.size());
-    ASSERT_EQ(10, (d.grid[0]).size());
+
+TEST(DarwinFixture, Darwin_construct_args_2){
+    Darwin d(1300,1700);
+    ASSERT_EQ(1700, d.grid.size());
+    ASSERT_EQ(1300, (d.grid[0]).size());
 }
-TEST(DarwinFixture, Darwin_construct_args_1){
-    Darwin d(10);
-    ASSERT_EQ(1, d.grid.size());
-    ASSERT_EQ(10, (d.grid[0]).size());
+TEST(DarwinFixture, Darwin_construct_args_3){
+    Darwin d(0,0);
+    ASSERT_EQ(0, d.grid.size());
 }
-TEST(DarwinFixture, Darwin_construct_args_1){
-    Darwin d(10);
-    ASSERT_EQ(1, d.grid.size());
-    ASSERT_EQ(10, (d.grid[0]).size());
+// * Darwin add creature * * * * * * * * * * * * * * * * * * * *
+TEST(DarwinFixture, Darwin_add_creature_1){
+    Species konoha("Kohoha shinobi");
+    Species akatsuki("Akatsuki shinobi");
+    
+    Creature madara(akatsuki, 's');
+    Creature gaisensei(konoha, 'n');
+    
+    Darwin d(4,4);
+    d.addCreature ( &madara, 0, 0);
+    d.addCreature ( &gaisensei, 0, 1);
+    ASSERT_EQ(d.grid[0][0],&madara);
+    ASSERT_EQ(d.grid[1][0],&gaisensei);
 }
+TEST(DarwinFixture, Darwin_add_creature_2){
+    Species konoha("Kohoha shinobi");
+    Species akatsuki("Akatsuki shinobi");
+    
+    Creature kisame(akatsuki, 's');
+    Creature kakashi(konoha, 'n');
+    
+    Darwin d(4,4);
+    d.addCreature ( &kisame, 1, 2);
+    d.addCreature ( &kakashi, 1, 2);
+    ASSERT_EQ(d.grid[2][1],&kakashi);
+}
+TEST(DarwinFixture, Darwin_add_creature_3){
+    Species konoha("Kohoha shinobi");
+    Species akatsuki("Akatsuki shinobi");
+    
+    Creature tobi(akatsuki, 's');
+    Creature rocklee(konoha, 'n');
+    
+    Darwin d(4000,4000);
+    d.addCreature ( &tobi, 1000, 2000);
+    d.addCreature ( &rocklee, 1000, 2001);
+    ASSERT_EQ(d.grid[2000][1000],&tobi);
+    ASSERT_EQ(d.grid[2001][1000],&rocklee);
+}
+// * Darwin check cell content * * * * * * * * * * * * * * * * * * * *
+TEST(DarwinFixture, Darwin_cell_content_1){
+    
+    string name = "Marsupial";
+    Species sp(name);
+    
+    Creature kangaroo(sp,'s');
+    
+    Darwin d;
+    d.addCreature(&kangaroo,0,0);
+    char result = d.cellContent(0, 0, name);
+    ASSERT_EQ('f',result);
+}
+TEST(DarwinFixture, Darwin_cell_content_2){
+    string name = "Marsupial";
+    Species sp(name);
+    
+    Creature wallaby(sp,'s');
+    
+    Darwin d;
+    d.addCreature(&wallaby,0,0);
+    char result = d.cellContent(0, 0, "Hey this isn't the bathroom");
+    ASSERT_EQ('m',result);
+}
+TEST(DarwinFixture, Darwin_cell_content_3){
+    Darwin d;
+    ASSERT_EQ(d.cellContent(0,0,"blerf"),'a');
+}
+// * Darwin process a cell in the grid * * * * * * * * * * * * * * * * * * * *
+TEST(DarwinFixture, Darwin_process_cell_1){
+    Species lefty("Lefty");
+    Left i0;
+    Go i1(0);
+    lefty.addInstruction(&i0);
+    lefty.addInstruction(&i1);
+    
+    Creature sonoflefty(lefty,'n');
+    
+    Darwin d(2,1);
+    d.addCreature(&sonoflefty,1,0);
+    d.processCell(1,0);
+    
+    ASSERT_EQ(d.grid[0][1]->dir,'w');
+    ASSERT_FALSE(d.grid[0][1]->acted);
+}
+TEST(DarwinFixture, Darwin_process_cell_2){
+    Species a("A");
+    Species b("B");
+    Left ai0;
+    Go ai1(0);
+    a.addInstruction(&ai0);
+    a.addInstruction(&ai1);
+    
+    Infect bi0;
+    Go bi1(0);
+    
+    b.addInstruction(&bi0);
+    b.addInstruction(&bi1);
+    
+    Creature alpha(a,'n');
+    Creature omega(b,'w');
+        
+    Darwin d(2,1);
+    d.addCreature(&alpha,0,0);
+    d.addCreature(&omega,1,0);
+    
+    ASSERT_EQ(d.cellContent(0,0,"B"),'m');
+    
+    d.processCell(1,0);
+    
+    ASSERT_EQ(d.cellContent(0,0,"B"),'f');
+    ASSERT_FALSE(d.grid[0][1]->acted);
+}
+TEST(DarwinFixture, Darwin_process_cell_3){
+    Species a("A");
+    
+    If_Empty i0(2);
+    Right i1;
+    Hop i2;
+    Go i3(0);
+    
+    a.addInstruction(&i0);
+    a.addInstruction(&i1);
+    a.addInstruction(&i2);
+    a.addInstruction(&i3);
+                        //grid: 0  1  2
+    Creature a1(a,'n'); //  0   -- -- a1
+    Creature a2(a,'n'); //  1   -- a2 --
+    Creature a3(a,'n'); //  2   a3 -- --
+    
+    Darwin d(3,3);
+    d.addCreature(&a1,2,0);
+    d.addCreature(&a2,1,1);
+    d.addCreature(&a3,0,2);
+    
+    ASSERT_EQ(d.cellContent(2,0,"A"),'f');
+    ASSERT_EQ(d.cellContent(2,0,"B"),'m');
+                        //grid: 0  1  2
+    d.processCell(2,0); //  0   -- a2 a1   a1 turns right
+    d.processCell(1,1); //  1   a3 ^^ --   a2 moves up
+    d.processCell(0,2); //  2   ^^ -- --   a3 moves up
+    
+    ASSERT_EQ(d.grid[0][2],&a1);
+    ASSERT_EQ((d.grid[0][2])->dir,'e');
+    ASSERT_EQ(d.grid[0][1],&a2);
+    ASSERT_EQ(d.grid[1][0],&a3);
+    ASSERT_EQ(d.grid[2][0],nullptr);
+    ASSERT_EQ(d.grid[1][1],nullptr);
+}
+
 //*/
