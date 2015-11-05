@@ -1,0 +1,14 @@
+[Darwin|vector(vector(Creature*)) grid;|addCreature()]<>-direction and name>[Creature|Species s;|act()]
+[Creature]<>-name>[Species|vector(Instruction*) i;|addInstruction()]
+[Creature]++->[function:act]
+[Species]<>-Instruction name>[Instruction]
+[Instruction]<>-I.name>[Hop]
+[Instruction]<>-I.name>[Left]
+[Instruction]<>-I.name>[Right]
+[Instruction]<>-I.name>[Infect]
+[Instruction]<>-I.name>[If_Empty]
+[Instruction]<>-I.name>[If_Wall]
+[Instruction]<>-I.name>[If_Random]
+[Instruction]<>-I.name>[Go]
+
+http://yuml.me/diagram/scruffy/class/draw
