@@ -478,7 +478,7 @@ TEST(DarwinFixture, Darwin_Species_act_3) {
     dir='s';
     n=s=e=w='m';
     pair<int, char> result = sp.act(n, e, s, w, pc, dir);
-    ASSERT_EQ(result,( pair<int,char>( 3, 'l' ) ));
+    ASSERT_EQ(result,( pair<int,char>( 4, 'l' ) ));
 }
 
 /*
