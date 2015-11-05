@@ -25,7 +25,6 @@ Darwin::Darwin (int w, int h) {
 }
 
 
-
 void Darwin::step(int n){
 	int w= grid[0].size();
 	int h= grid.size();

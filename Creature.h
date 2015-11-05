@@ -46,6 +46,7 @@ class Creature {
         FRIEND_TEST(DarwinFixture, Darwin_process_cell_1);
         FRIEND_TEST(DarwinFixture, Darwin_process_cell_2);
         FRIEND_TEST(DarwinFixture, Darwin_process_cell_3);
+        FRIEND_TEST(DarwinFixture, Darwin_step_1);
         
 	public:
 		Creature(const Species& s = Species(), char d = '?');

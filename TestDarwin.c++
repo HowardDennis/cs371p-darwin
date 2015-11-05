@@ -769,7 +769,7 @@ TEST(DarwinFixture, Darwin_process_cell_3){
     ASSERT_EQ(d.grid[2][0],nullptr);
     ASSERT_EQ(d.grid[1][1],nullptr);
 }
-
+// * Darwin print * * * * * * * * * * * * * * * * * * * *
 TEST(DarwinFixture, Darwin_print_default){
     Darwin d(1, 1);
     ostringstream w;
@@ -810,5 +810,47 @@ TEST(DarwinFixture, Darwin_full_of_creatures){
     d.print(w);
     ASSERT_EQ("Turn = 0.\n  0123\n0 nnnn\n1 nnnn\n2 nnnn\n3 nnnn\n", w.str());
 }
-
+// * Darwin step * * * * * * * * * * * * * * * * * * * *
+TEST(DarwinFixture, Darwin_step_1){
+    Darwin d(4,4);
+    Species hopper("hopper");
+    
+    Hop i0;
+    Go i1(0);
+    
+    hopper.addInstruction(&i0);
+    hopper.addInstruction(&i1);
+                                //   0 1 2 3
+    Creature h1(hopper, 'n');   // 0 - - - -
+    Creature h2(hopper, 's');   // 1 - 1 3 -
+    Creature h3(hopper, 'e');   // 2 - 4 2 -
+    Creature h4(hopper, 'w');   // 3 - - - -
+    
+    d.addCreature(&h1,1,1);
+    d.addCreature(&h2,2,2);
+    d.addCreature(&h3,2,1);
+    d.addCreature(&h4,1,2);
+    
+    d.step();
+    //   0 1 2 3
+    // 0 - 1 - -
+    // 1 - - - 3
+    // 2 4 - - -
+    // 3 - - 2 -
+    
+    ASSERT_EQ(d.grid[0][1],&h1);
+    ASSERT_EQ(d.grid[3][2],&h2);
+    ASSERT_EQ(d.grid[1][3],&h3);
+    ASSERT_EQ(d.grid[2][0],&h4);
+    
+}/*
+TEST(DarwinFixture, Darwin_step_1){
+    
+}
+TEST(DarwinFixture, Darwin_step_1){
+    
+}
+TEST(DarwinFixture, Darwin_step_1){
+    
+}
 //*/

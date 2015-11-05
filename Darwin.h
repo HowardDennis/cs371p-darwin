@@ -42,6 +42,8 @@ class Darwin {
         FRIEND_TEST(DarwinFixture, Darwin_process_cell_1);
         FRIEND_TEST(DarwinFixture, Darwin_process_cell_2);
         FRIEND_TEST(DarwinFixture, Darwin_process_cell_3);
+        FRIEND_TEST(DarwinFixture, Darwin_step_1);
+        
 	public:
 		Darwin (int w = 1, int h = 1); // default is 1x1
 		void addCreature(Creature*, int, int);

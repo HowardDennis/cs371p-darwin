@@ -37,6 +37,7 @@ private:
     FRIEND_TEST(DarwinFixture, Darwin_Creature_act_3);
     
     FRIEND_TEST(DarwinFixture, Darwin_process_cell_3);
+    FRIEND_TEST(DarwinFixture, Darwin_step_1);
         
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
@@ -387,6 +388,7 @@ class Go : private Instruction {
     FRIEND_TEST(DarwinFixture, Darwin_process_cell_2);
     
     FRIEND_TEST(DarwinFixture, Darwin_process_cell_3);
+    FRIEND_TEST(DarwinFixture, Darwin_step_1);
     
 	Go(int _n) : num(_n) {}
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
