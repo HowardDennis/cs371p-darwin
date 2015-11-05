@@ -13,6 +13,7 @@
 #include <sstream>  // istringstream
 #include <string>   // getline, string
 #include <utility>  // make_pair, pair
+#include <stdio.h>  // printf
 
 #include "Darwin.h"
 
@@ -136,4 +137,50 @@ char Darwin::cellContent(int x, int y, string name){
 
 void Darwin::addCreature ( Creature* c, int w, int h) {
     grid[w][h] = c;
+}
+
+void Darwin::print(int turn = 0) {
+    printf("*** Darwin %dx%d ***\n", (int)grid.size(), (int)grid[0].size());
+    printf("Turn = %d.\n", turn);
+    unsigned char i = 0;
+    unsigned char p = 0;
+    cout << "  ";
+    while (p < grid[0].size()) {
+        //The following if statements are to keep the printed indicies numbers and letters
+        if (i == 10) {
+            i += 7;
+        }
+        if (i == 43) {
+            i += 7;
+        }
+        if (i == 74) {
+            i = 0;
+        }
+        cout << char('0' + i);
+        ++i;
+        ++p;
+    }
+    endl(cout);
+    i = 0;
+    p = 0;
+    while (p < grid.size()) {
+        if (i == 10) {
+            i += 7;
+        }
+        if (i == 43) {
+            i += 7;
+        }
+        if (i == 74) {
+            i = 0;
+        }
+        cout << char('0' + i) << " ";
+        unsigned int j = 0;
+        while (j < grid[0].size()) {
+            (grid[p][j] == nullptr) ? cout << "." : cout << grid[p][j]->spec.name[0];  //change
+            ++j;
+        }
+        endl(cout);
+        ++i;
+        ++p;
+    }
 }

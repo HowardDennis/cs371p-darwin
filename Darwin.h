@@ -30,5 +30,6 @@ class Darwin {
 	public:
 		Darwin (int w = 0, int h = 0);
 		void addCreature(Creature*, int, int);
+		void print();
 };
 
