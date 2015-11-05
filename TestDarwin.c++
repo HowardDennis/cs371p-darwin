@@ -408,6 +408,7 @@ TEST(DarwinFixture, Darwin_Instruction_Go){
 }
 
 // SPECIES
+// * Species Constructors * * * * * * * * * * * * * * * * * * * *
 TEST(DarwinFixture, Darwin_Species_default) {
 	Species c;
 	ASSERT_EQ(c.name, "null");
@@ -416,6 +417,7 @@ TEST(DarwinFixture, Darwin_Species_named) {
 	Species c("pass");
 	ASSERT_EQ(c.name, "pass");
 }
+// * Species addInstruction() * * * * * * * * * * * * * * * * * * * *
 TEST(DarwinFixture, Darwin_Species_addInstruction) {
 	Species c;
     Hop i1 = Hop();
@@ -426,6 +428,7 @@ TEST(DarwinFixture, Darwin_Species_addInstruction) {
 	ASSERT_EQ((c.i).size(),2);
     ASSERT_EQ(((Go*)(c.i[1]))->num,5);
 }
+// * Species act() * * * * * * * * * * * * * * * * * * * *
 TEST(DarwinFixture, Darwin_Species_act_1) {
     Species sp;
     Hop i1;
@@ -461,7 +464,6 @@ TEST(DarwinFixture, Darwin_Species_act_2) {
     result = sp.act(n, e, s, w, pc, dir);
     ASSERT_EQ(result,( pair<int,char>( 3, 'z' ) ));
 }
-
 TEST(DarwinFixture, Darwin_Species_act_3) {
     Species sp;
     Go i0(2);
@@ -481,25 +483,120 @@ TEST(DarwinFixture, Darwin_Species_act_3) {
     ASSERT_EQ(result,( pair<int,char>( 4, 'l' ) ));
 }
 
-/*
-TEST(DarwinFixture, Darwin_Species_named) {
-	Species c("pass");
-	ASSERT_EQ(c.name, "pass");
+// CREATURE
+// * Creature Constructors * * * * * * * * * * * * * * * * * * * *
+TEST(DarwinFixture, Darwin_Creature_construct_default){
+    Species sp;
+    Creature cr(sp,'n'); //a north-facing null
+    ASSERT_EQ(cr.spec.name,"null");
 }
-/*
-TEST(DarwinFixture, Darwin_addCreature_1) {
-	Species s("test species");
-	Creature c(s,'n');
-	Darwin d(2,2);
+TEST(DarwinFixture, Darwin_Creature_construct_args){
+    Species sp("Elephant");
+    Creature cr(sp,'n'); //a north-facing Elephant
+    ASSERT_EQ(cr.spec.name,"Elephant");
 }
-
-TEST(DarwinFixture, Darwin_addCreature_2) {
-	Species s1("test species 1");
-	Species s2("test species 2");
-	Creature c1(s1,'n');
-	Creature c2(s2,'s');
+TEST(DarwinFixture, Darwin_Creature_act_1){
+    Species sp("Elephant");
+    If_Enemy i0(2);
+    Left i1;
+    Infect i2;
+    Go i3(1);
+    
+    sp.addInstruction(&i0);
+    sp.addInstruction(&i1);
+    sp.addInstruction(&i2);
+    sp.addInstruction(&i3);
+    
+    Creature cr(sp,'n'); //a north-facing Elephant
+    
+    char n,s,e,w;
+    n=s=e=w='m';
+    char result = cr.act(n,e,s,w);
+    ASSERT_EQ(result,'o');
+    ASSERT_EQ(cr.pc,3);
 }
-
-TEST(DarwinFixture, Darwin_addCreature_3) {
+TEST(DarwinFixture, Darwin_Creature_act_2){
+    Species sp("Candiru");
+    If_Enemy i0(2);
+    Left i1;
+    Infect i2;
+    Go i3(0);
+    
+    sp.addInstruction(&i0);
+    sp.addInstruction(&i1);
+    sp.addInstruction(&i2);
+    sp.addInstruction(&i3);
+    Creature cr(sp,'s'); //a south-facing Candiru
+    char n,s,e,w;
+    n=s=e=w='m';
+    cr.act(n,e,s,w);
+    char result = cr.act(n,e,'a',w);// next step, space is available
+    ASSERT_EQ(result,'l');
+    ASSERT_EQ(cr.pc,2);
+}
+TEST(DarwinFixture, Darwin_Creature_act_3){
+    Species dodo("dodo");
+    Hop i0;
+    Go i1(0); 
+    
+    dodo.addInstruction(&i0);
+    dodo.addInstruction(&i1);
+    
+    Creature cr(dodo,'e');//an eastern dodo
+    
+    char n,s,e,w;
+    n=s=e=w='m';
+    cr.act(n,e,s,w);
+    char result = cr.act(n,e,'a',w);// next step, space is available
+    ASSERT_EQ(result,'z');
+    ASSERT_EQ(cr.pc,1);
+}
+TEST(DarwinFixture, Darwin_Creature_left_0){
+    Species sp("Walrus");
+    Creature cr(sp,'w');
+    cr.turnLeft();
+    ASSERT_EQ(cr.dir,'s');
+}
+TEST(DarwinFixture, Darwin_Creature_left_1){
+    Species sp("Eagle");
+    Creature cr(sp,'e');
+    cr.turnLeft();
+    ASSERT_EQ(cr.dir,'n');
+}
+TEST(DarwinFixture, Darwin_Creature_left_2){
+    Species sp("Narwhal");
+    Creature cr(sp,'n');
+    cr.turnLeft();
+    ASSERT_EQ(cr.dir,'w');
+}
+TEST(DarwinFixture, Darwin_Creature_left_3){
+    Species sp("Spider");
+    Creature cr(sp,'s');
+    cr.turnLeft();
+    ASSERT_EQ(cr.dir,'e');
+}
+TEST(DarwinFixture, Darwin_Creature_right_0){
+    Species sp("Walrus");
+    Creature cr(sp,'w');
+    cr.turnRight();
+    ASSERT_EQ(cr.dir,'n');
+}
+TEST(DarwinFixture, Darwin_Creature_right_1){
+    Species sp("Eagle");
+    Creature cr(sp,'e');
+    cr.turnRight();
+    ASSERT_EQ(cr.dir,'s');
+}
+TEST(DarwinFixture, Darwin_Creature_right_2){
+    Species sp("Narwhal");
+    Creature cr(sp,'n');
+    cr.turnRight();
+    ASSERT_EQ(cr.dir,'e');
+}
+TEST(DarwinFixture, Darwin_Creature_right_3){
+    Species sp("Spider");
+    Creature cr(sp,'s');
+    cr.turnRight();
+    ASSERT_EQ(cr.dir,'w');
 }
 //*/

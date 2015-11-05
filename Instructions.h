@@ -1,5 +1,6 @@
 #include "Instruction.h"
 #include <cassert>
+#include <iostream> //cout, endl
 #include "gtest/gtest_prod.h"
 
 /* INSTRUCTIONS:
@@ -33,7 +34,8 @@ private:
     FRIEND_TEST(DarwinFixture, Darwin_Species_addInstruction);
     FRIEND_TEST(DarwinFixture, Darwin_Species_act_1);
     FRIEND_TEST(DarwinFixture, Darwin_Species_act_2);
-    
+    FRIEND_TEST(DarwinFixture, Darwin_Creature_act_3);
+        
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
 			case 'n' : 
@@ -74,6 +76,9 @@ private:
 	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Left_act);
     
     FRIEND_TEST(DarwinFixture, Darwin_Species_act_3);
+    
+    FRIEND_TEST(DarwinFixture, Darwin_Creature_act_1);
+    FRIEND_TEST(DarwinFixture, Darwin_Creature_act_2);
     
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 /*
@@ -139,6 +144,9 @@ class Infect : private Instruction {
     
     FRIEND_TEST(DarwinFixture, Darwin_Species_addInstruction);
     FRIEND_TEST(DarwinFixture, Darwin_Species_act_2);
+    
+    FRIEND_TEST(DarwinFixture, Darwin_Creature_act_1);
+    FRIEND_TEST(DarwinFixture, Darwin_Creature_act_2);
     
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
@@ -308,6 +316,9 @@ class If_Enemy : private Instruction {
     
     FRIEND_TEST(DarwinFixture, Darwin_Species_act_3);
     
+    FRIEND_TEST(DarwinFixture, Darwin_Creature_act_1);
+    FRIEND_TEST(DarwinFixture, Darwin_Creature_act_2);
+    
 	If_Enemy(int _n) : num(_n) {}
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
@@ -357,9 +368,12 @@ class Go : private Instruction {
     FRIEND_TEST(DarwinFixture, Darwin_Species_act_2);
     FRIEND_TEST(DarwinFixture, Darwin_Species_act_3);
     
+    FRIEND_TEST(DarwinFixture, Darwin_Creature_act_1);
+    FRIEND_TEST(DarwinFixture, Darwin_Creature_act_2);
+    FRIEND_TEST(DarwinFixture, Darwin_Creature_act_3);
+    
 	Go(int _n) : num(_n) {}
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		return pair<int, char> (num, 'c');
 	};
-
 };

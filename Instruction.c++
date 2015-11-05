@@ -7,29 +7,25 @@ class Hop : private Instruction {
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
 			case 'n' : 
-					if (n == 'a') {
-						return pair<int, char> (++pc, dir);
-					}
+				if (n == 'a') {
+					return pair<int, char> (++pc, dir);
+				}
 				break;
-
 			case 'e' : 
-					if (e == 'a') {
-						return pair<int, char> (++pc, dir);
-					}
+				if (e == 'a') {
+                    return pair<int, char> (++pc, dir);
+				}
 				break;
-
 			case 's' : 
-					if (s == 'a') {
-						return pair<int, char> (++pc, dir);
-					}				
+				if (s == 'a') {
+					return pair<int, char> (++pc, dir);
+				}				
 				break;
-
 			case 'w' : 
-					if (w == 'a') {
-						return pair<int, char> (++pc, dir);
-					}
+				if (w == 'a') {
+					return pair<int, char> (++pc, dir);
+				}
 				break;
-
 		}
 		assert(false);
 		pair<int, char> p = {-1,'!'};

@@ -20,10 +20,21 @@ class Creature {
         void turnLeft();
         void turnRight();
 
-		FRIEND_TEST(DarwinFixture, Darwin_Creature_default);
-
+        FRIEND_TEST(DarwinFixture, Darwin_Creature_construct_default);
+        FRIEND_TEST(DarwinFixture, Darwin_Creature_construct_args);
+        FRIEND_TEST(DarwinFixture, Darwin_Creature_act_1);
+        FRIEND_TEST(DarwinFixture, Darwin_Creature_act_2);
+        FRIEND_TEST(DarwinFixture, Darwin_Creature_act_3);
+        FRIEND_TEST(DarwinFixture, Darwin_Creature_left_0);
+        FRIEND_TEST(DarwinFixture, Darwin_Creature_left_1);
+        FRIEND_TEST(DarwinFixture, Darwin_Creature_left_2);
+        FRIEND_TEST(DarwinFixture, Darwin_Creature_left_3);
+        FRIEND_TEST(DarwinFixture, Darwin_Creature_right_0);
+        FRIEND_TEST(DarwinFixture, Darwin_Creature_right_1);
+        FRIEND_TEST(DarwinFixture, Darwin_Creature_right_2);
+        FRIEND_TEST(DarwinFixture, Darwin_Creature_right_3);
 
 	public:
-		Creature(const Species& s = Species(), char d = 0);
+		Creature(const Species& s = Species(), char d = '?');
 		// send in information regarding area so creature can decide
 };
