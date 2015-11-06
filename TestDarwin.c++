@@ -1009,4 +1009,26 @@ TEST(DarwinFixture, Darwin_iteration_2){
     ASSERT_EQ(&(*dib),&c4);
 }
 
+TEST(DarwinFixture, Darwin_at){
+    Darwin d(3,3);
+    Species a("A");
+    Species b("B");
+    
+    Creature c1(a,'n');
+    Creature c2(a,'n');
+    Creature c3(a,'n');
+    Creature c4(b,'n');
+    Creature c5(b,'n');
+    Creature c6(b,'n');
+    
+    d.addCreature(&c1,0,0);
+    d.addCreature(&c2,0,1);
+    d.addCreature(&c3,0,2);
+    
+    d.addCreature(&c4,2,0);
+    d.addCreature(&c5,2,1);
+    d.addCreature(&c6,2,2);
+    
+    ASSERT_EQ(&c6, &(d.at(8)));
+}
 //*/

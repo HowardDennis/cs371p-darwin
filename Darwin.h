@@ -54,6 +54,7 @@ class Darwin {
         FRIEND_TEST(DarwinFixture, Darwin_step_3);
         FRIEND_TEST(DarwinFixture, Darwin_iteration_1);
         FRIEND_TEST(DarwinFixture, Darwin_iteration_2);
+        FRIEND_TEST(DarwinFixture, Darwin_at);
         
 	public:
         Darwin_Iterator begin();
@@ -68,6 +69,7 @@ class Darwin_Iterator : public iterator<input_iterator_tag, int> {
     
     FRIEND_TEST(DarwinFixture, Darwin_iteration_1);
     FRIEND_TEST(DarwinFixture, Darwin_iteration_2);
+    FRIEND_TEST(DarwinFixture, Darwin_at);
     
     int _p; // position
     Darwin* d;
