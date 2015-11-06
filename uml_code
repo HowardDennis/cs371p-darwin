@@ -1,6 +1,5 @@
-[Darwin|vector(vector(Creature*)) grid;|addCreature()]<>-direction and name>[Creature|Species s;|act()]
-[Creature]<>-name>[Species|vector(Instruction*) i;|addInstruction()]
-[Creature]++->[function:act]
+[Darwin|vector(vector(Creature*)) grid;|addCreature(Creature* x-position y-position)]<>-direction and name>[Creature|Species s;|act(char n char e char s char w)]
+[Creature]<>-      name>[Species|vector(Instruction*) i;|addInstruction(); act(char n char e char s char w int pc char direction)]
 [Species]<>-Instruction name>[Instruction]
 [Instruction]<>-I.name>[Hop]
 [Instruction]<>-I.name>[Left]

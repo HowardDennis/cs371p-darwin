@@ -3,14 +3,19 @@ FILES :=                              \
     darwin-tests/hed287-RunDarwin.out  \
     darwin-tests/hed287-TestDarwin.c++ \
     darwin-tests/hed287-TestDarwin.out \
+    Creature.c++					 \
     Darwin.c++                       \
     Darwin.h                         \
     Darwin.log                       \
     html                              \
+    Instruction.c++					\
+    Instruction.h 					\
+    Instructions.h 					\
     RunDarwin.c++                    \
     RunDarwin.out                    \
+    Species.c++						\
+    Species.h 						\
     TestDarwin.c++                   \
-    test.c++						 \
     TestDarwin.out
 
 CXX        := g++-4.8
@@ -96,11 +101,3 @@ TestDarwin.tmp: TestDarwin
 	$(GCOV) -b Darwin.c++     | grep -A 5 "File 'Darwin.c++'"     >> TestDarwin.tmp
 	$(GCOV) -b TestDarwin.c++ | grep -A 5 "File 'TestDarwin.c++'" >> TestDarwin.tmp
 	cat TestDarwin.tmp
-
-trivial: test.c++ Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++ Instruction.c++
-		$(CXX) $(CXXFLAGS) $(GCOVFLAGS) test.c++ Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++ Instruction.c++ -o test
-		./test
-		make clean
-
-OtherTest: Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++ Instructions.h OtherTest.c++
-	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) $(LDFLAGS) Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++ Instructions.h OtherTest.c++ -o OtherTest $(LDFLAGS)
