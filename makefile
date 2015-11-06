@@ -7,6 +7,7 @@ FILES :=                              \
     Darwin.c++                       \
     Darwin.h                         \
     Darwin.log                       \
+    Darwin.pdf						 \
     html                              \
     Instruction.c++					\
     Instruction.h 					\
