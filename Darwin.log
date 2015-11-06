@@ -1,0 +1,382 @@
+commit 70b009ca07a6f3f428b6e785635d45c7eaf2f04e
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Thu Nov 5 22:54:44 2015 -0600
+
+    all over but the gcovs
+
+commit eca365b3527e6cc16db485b1299081ee1ac97bd2
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Thu Nov 5 22:54:34 2015 -0600
+
+    all over but the gcovs
+
+commit 5d69a83b2aff8c8c1c9b88c83b7561acd2c11f7b
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Thu Nov 5 21:28:07 2015 -0600
+
+    tests final
+
+commit 68d7a8b94624532bee676a5b42d36b818fa4c007
+Merge: 0fcb5fa 6734870
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Thu Nov 5 21:22:12 2015 -0600
+
+    merge fix after adding iterator tests
+
+commit 0fcb5fa1c6aa3c5df8c9c76b6695cc78b2f9fda2
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Thu Nov 5 21:20:40 2015 -0600
+
+    added begin, end tests
+
+commit 67348701f7902e14e312021975760e935aaa0c34
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Thu Nov 5 21:16:53 2015 -0600
+
+    changed makefile
+
+commit a8bc5779e849779a4cd330d093ac79eb1976b4e2
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Thu Nov 5 20:55:59 2015 -0600
+
+    made comments for files
+
+commit 36b436a13aa438edab26ec1becaa3cf34e20ee3c
+Merge: b5bfb48 7a11879
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Thu Nov 5 20:18:47 2015 -0600
+
+    Merge branch 'master' of https://github.com/HowardDennis/cs371p-darwin
+
+commit b5bfb48cbd4f4ed749a318410adcc90e3a7f5de4
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Thu Nov 5 20:18:35 2015 -0600
+
+    Darwin step tests finished
+
+commit 7a118792bb587e52f23c9a5168bf0300f9551b37
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Thu Nov 5 19:02:40 2015 -0600
+
+    made pdf
+
+commit 84e3022171ddf285ce392631bd100940df52aaff
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Thu Nov 5 18:53:35 2015 -0600
+
+    changed makefile
+
+commit d444bf3973935646a8f09ee2a9a0247a06b6c58c
+Merge: d43d34d 74e3ab9
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Thu Nov 5 17:59:34 2015 -0600
+
+    Merge branch 'master' of https://github.com/HowardDennis/cs371p-darwin
+
+commit d43d34df77490f10f32d72b0020d2caef583819e
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Thu Nov 5 17:59:23 2015 -0600
+
+    darwin step_1 test added, step logic fixed
+
+commit 74e3ab9bab795724d1a0da93f4a48fe36a8aa9c2
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Thu Nov 5 16:56:26 2015 -0600
+
+    Create uml_start
+
+commit e68494b7cf2b954600d845bfef4dd374d868c593
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Thu Nov 5 16:24:20 2015 -0600
+
+    Darwin.c++ regression fixed--final tests segfaulting however
+
+commit 368ddc2f2b769fd4411e3abecd763af20c93482c
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Thu Nov 5 15:43:48 2015 -0600
+
+    merge conflict resolved
+
+commit 8db69408fca3c9153a85e4af76454e1f17cdfac3
+Merge: 98c4f9f 31dbea2
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Thu Nov 5 15:39:36 2015 -0600
+
+    added most darwin tests
+
+commit 98c4f9f0507d38c41534a2ac6a0839da82d63172
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Thu Nov 5 15:35:54 2015 -0600
+
+    tests for darwin and fixes added
+
+commit 31dbea202e667c3ab0fab6772a9d4071b5dda941
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Thu Nov 5 15:26:55 2015 -0600
+
+    made tests for print
+
+commit da0820888432b06e2920ded529a7c2306783a3e4
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Wed Nov 4 23:05:47 2015 -0600
+
+    i pushed an unclean dir :C
+
+commit 48036f7aea593fee2901202623e4b19e8262ca0b
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Wed Nov 4 23:05:04 2015 -0600
+
+    added Darwin constructor tests
+
+commit 8345e78c5ac76e0755fc640d72faf31163fce7b2
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Wed Nov 4 22:34:21 2015 -0600
+
+    unit tests finished for Creature
+
+commit dfd008638107fbb8e0d51d126887b2f20ef9c141
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Wed Nov 4 21:15:44 2015 -0600
+
+    started on grid
+
+commit 619b210a6f0d6fdc16023cdd44b5a2597529ba7c
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Wed Nov 4 19:21:50 2015 -0600
+
+    fixed a small error in species tests, now passing
+
+commit bed8a4f2b19e07286fd5498e84d81b02056b22f7
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Wed Nov 4 19:20:27 2015 -0600
+
+    species tests added
+
+commit ec006b79a75ccdfb4ec4e76455eb3b73d033f5f1
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Wed Nov 4 16:51:29 2015 -0600
+
+    finished tests for instructions
+
+commit 37f5cf395132b26e6601b743baef1478575ed25c
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Tue Nov 3 16:26:27 2015 -0600
+
+    added tests for Left,Right,Infect Instruction objects
+
+commit dbff7e3ffe25e80d89b6efdc6fa170375b3609f8
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Tue Nov 3 16:04:27 2015 -0600
+
+    added Species tests
+
+commit e83bfb7fe75e44f3315acec89fcab93b082d1608
+Merge: 6f25291 07f49f0
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Tue Nov 3 15:54:00 2015 -0600
+
+    HOP test implemented, merge conflict issue fixed
+
+commit 6f2529151d0db02efccb93c63bd108b8429de3ed
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Tue Nov 3 15:49:58 2015 -0600
+
+    HOP instruction tests added and passing
+
+commit 07f49f047eb187f5bc4176a1a1d4fb2a70d4bb6e
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Tue Nov 3 15:43:37 2015 -0600
+
+    added othertests
+
+commit 2cd0405086517d454b18203555f8a22baa0934db
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Tue Nov 3 15:23:41 2015 -0600
+
+    added hop test and modifications to allow appropriate access via GTEST
+
+commit d95b84b3333319ad597c54c228f27500a9c5349f
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Tue Nov 3 13:13:25 2015 -0600
+
+    first draft of completed 'step' logic for Darwin->creature->species->instruction
+
+commit b456e3cbc40a9a1b29357bc86dc00822096ad27e
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Mon Nov 2 13:53:48 2015 -0600
+
+    additional darwin logic, friend class permissions darwin->species
+
+commit a01f4846426d6780024676ba8b31ad56fe8c27aa
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Mon Nov 2 12:36:59 2015 -0600
+
+    Darwin.*: changed from vector<Creature> to vector<Creature*>
+
+commit ce80fe8761e0be0b09e8630afd1525abc613c3c4
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Sun Nov 1 17:43:05 2015 -0600
+
+    made classes for individual instructions
+
+commit 744a45708cd0ca28c2f2d45b82ba19595838a65f
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Sun Nov 1 16:03:22 2015 -0600
+
+    interface compilation errors resolved
+
+commit b67eefb7723d6df3203c33558ca5998abe65ca33
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Sun Nov 1 15:47:27 2015 -0600
+
+    improved Instruction class
+
+commit 19529a886518349855d4ce4fc32dd3df18802fb7
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Fri Oct 30 16:27:43 2015 -0500
+
+    kj
+
+commit e6ea27d587d91a9c3c1c253fdafae8a1cc572412
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Fri Oct 30 16:19:43 2015 -0500
+
+    kj
+
+commit 454d5f25ac0eeaf954edbf9bb9b27aafeaf855a8
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Fri Oct 30 15:57:05 2015 -0500
+
+    added function definitions to classes
+
+commit df62ed0142a98fd374a361ba55bb8047dce9581e
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Fri Oct 30 13:48:53 2015 -0500
+
+    refinement of the interfaces
+
+commit e1256189b49a9b29fe0f7b316e0b0b6b3ed4556d
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Fri Oct 30 12:55:23 2015 -0500
+
+    k
+
+commit 0dd5c65554bece3019ae72c10a1f223b0fb91f47
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Thu Oct 29 14:21:41 2015 -0500
+
+    made new class header files
+
+commit db13f6352f3d0b0ab46648d27ed6ef899339d56b
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Mon Oct 26 21:03:12 2015 -0500
+
+    Update makefile
+
+commit ecae60599d80354065750a34d90207966e109eb1
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Mon Oct 26 20:52:05 2015 -0500
+
+    Update makefile
+
+commit 9e488914304dc540d338aaf440f5e335e2061c2d
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Mon Oct 26 20:49:55 2015 -0500
+
+    Update makefile
+
+commit 98043d7aef8f3fb8c74742fc9dff14f7cf67bbe4
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Mon Oct 26 20:47:15 2015 -0500
+
+    Update .travis.yml
+
+commit 75497f8cc729f3ebee5dbbd54070f725a83996cf
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Mon Oct 26 20:43:18 2015 -0500
+
+    Update and rename TestCollatz.out to TestDarwin.out
+
+commit a69b72166bef2889ea8accd189205d99c46088ff
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Mon Oct 26 20:42:22 2015 -0500
+
+    Rename TestCollatz.c++ to TestDarwin.c++
+
+commit dea35a4f8175e85a087f69023728788e0f428ed2
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Mon Oct 26 20:42:03 2015 -0500
+
+    Update TestCollatz.c++
+
+commit 8f532b631ac2e0a2afada820109e2d037660da82
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Mon Oct 26 20:41:13 2015 -0500
+
+    Delete RunCollatz.in
+
+commit 86979d28b72fb0eb66672a806ba00dbdcbba13da
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Mon Oct 26 20:40:28 2015 -0500
+
+    Update and rename Collatz.h to Darwin.h
+
+commit f5f6b67f25a464921dad8f9b21e65aa560eb30b6
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Mon Oct 26 20:39:35 2015 -0500
+
+    Update and rename Collatz.c++ to Darwin.c++
+
+commit 085748f2580594ea54e649e8afd3a8da56ccc040
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Mon Oct 26 20:38:37 2015 -0500
+
+    Delete RunCollatz.out
+
+commit 82d2ea400e718e6c2742716b977aaa152ba11cc3
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Mon Oct 26 20:38:26 2015 -0500
+
+    Delete RunCollatz.c++
+
+commit d68a77207dc019a0075510562413704b45bbb2e8
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Mon Oct 26 20:37:57 2015 -0500
+
+    added more needed files
+
+commit 8b89aa83a1e1bcac0ef8184fda41ff36e6ede459
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Mon Oct 26 20:33:38 2015 -0500
+
+    Update makefile
+
+commit eb44d7f1e7bc2edaedbd43f2ece5de782c2abd94
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Mon Oct 26 20:31:00 2015 -0500
+
+    Create makefile
+
+commit 2dafbc24137203dba593a5e3edc22fc62babdf66
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Mon Oct 26 20:26:36 2015 -0500
+
+    Create .travis.yml
+
+commit 28f47860edf7dde50da40067af7d97e8905d68fe
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Mon Oct 26 20:25:09 2015 -0500
+
+    closes #6
+
+commit de31547aa42275df8a1da62edb17df65fa207f98
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Sat Oct 24 12:37:26 2015 -0500
+
+    Update .gitignore
+
+commit c78fc68ec10008d61190df39eb02658a3a21ce2e
+Author: HowardDennis <h2dennis@gmail.com>
+Date:   Sat Oct 24 12:36:40 2015 -0500
+
+    Initial commit
