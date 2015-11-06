@@ -32,7 +32,6 @@ class Darwin {
 	friend class Darwin_Iterator;
     private:
 		vector < vector<Creature*> > grid;
-		void step(int n=1); // a single step
 		void processCell(int,int); // processes cell at grid[y][x]
 		char cellContent(int,int,string name = "blank");
         
@@ -57,6 +56,7 @@ class Darwin {
         FRIEND_TEST(DarwinFixture, Darwin_at);
         
 	public:
+        void step(int n=1); // a single step
         Darwin_Iterator begin();
         Darwin_Iterator end();
         const Creature& at(int n);

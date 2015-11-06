@@ -202,7 +202,7 @@ void Darwin::print(ostream& w, int turn) {
     w << "  ";
     while (p < grid[0].size()) { //prints top row indicies
         //The following if statements are to keep the printed indicies numbers and letters
-        if (i == 10) {
+        /*if (i == 10) {
             i += 7;
         }
         if (i == 43) {
@@ -210,7 +210,8 @@ void Darwin::print(ostream& w, int turn) {
         }
         if (i == 74) {
             i = 0;
-        }
+        }*/
+        i=i%10;
         w << char('0' + i);
         ++i;
         ++p;
@@ -219,6 +220,7 @@ void Darwin::print(ostream& w, int turn) {
     i = 0;
     p = 0;
     while (p < grid.size()) {
+        /*
         if (i == 10) {
             i += 7;
         }
@@ -227,7 +229,8 @@ void Darwin::print(ostream& w, int turn) {
         }
         if (i == 74) {
             i = 0;
-        }
+        }*/
+        i=i%10;
         w << char('0' + i) << " ";
         unsigned int j = 0;
         while (j < grid[0].size()) {

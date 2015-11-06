@@ -86,15 +86,15 @@ Darwin.log:
 Doxyfile:
 	doxygen -g
 
-RunDarwin: Darwin.h Darwin.c++ RunDarwin.c++
-	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) Darwin.c++ RunDarwin.c++ -o RunDarwin
+RunDarwin: Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++ Instructions.h RunDarwin.c++
+	$(CXX) $(CXXFLAGS) Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++ Instructions.h RunDarwin.c++ -o RunDarwin
 
 RunDarwin.tmp: RunDarwin
 	./RunDarwin > RunDarwin.tmp
 	diff RunDarwin.tmp RunDarwin.out
 
 TestDarwin: Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++ Instructions.h TestDarwin.c++
-	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) $(LDFLAGS) Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++ Instructions.h TestDarwin.c++ -o TestDarwin $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) $(GCOVFLAGS) Darwin.h Instruction.h Species.h Creature.h Darwin.c++ Species.c++ Creature.c++ Instructions.h TestDarwin.c++ -o TestDarwin $(LDFLAGS)
 
 TestDarwin.tmp: TestDarwin
 	$(VALGRIND) ./TestDarwin                                       >  TestDarwin.tmp 2>&1
