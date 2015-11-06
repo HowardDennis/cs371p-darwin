@@ -225,3 +225,14 @@ void Darwin::print(ostream& w, int turn) {
         ++p;
     }
 }
+
+Darwin_Iterator Darwin::begin(){
+    return Darwin_Iterator(0,this);
+}
+Darwin_Iterator Darwin::end(){
+    return Darwin_Iterator(grid.size()*grid[0].size(),this);
+}
+const Creature& Darwin::at(int n){
+    int w=grid[0].size();
+    return *(grid[n/w][n%w]);
+}

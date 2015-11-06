@@ -51,6 +51,8 @@ class Species {
         FRIEND_TEST(DarwinFixture, Darwin_step_1);
         FRIEND_TEST(DarwinFixture, Darwin_step_2);
         FRIEND_TEST(DarwinFixture, Darwin_step_3);
+        FRIEND_TEST(DarwinFixture, Darwin_iteration_1);
+        FRIEND_TEST(DarwinFixture, Darwin_iteration_2);
         
 	public:
 		Species(string n = "null");

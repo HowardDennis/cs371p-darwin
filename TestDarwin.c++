@@ -955,4 +955,58 @@ TEST(DarwinFixture, Darwin_step_3){
 
     ASSERT_EQ(state,response);
 }
+TEST(DarwinFixture, Darwin_iteration_1){
+    Darwin d(3,3);
+    Species a("A");
+    Species b("B");
+    
+    Creature c1(a,'n');
+    Creature c2(a,'n');
+    Creature c3(a,'n');
+    Creature c4(b,'n');
+    Creature c5(b,'n');
+    Creature c6(b,'n');
+    
+    d.addCreature(&c1,0,0);
+    d.addCreature(&c2,0,1);
+    d.addCreature(&c2,0,2);
+    
+    d.addCreature(&c1,2,0);
+    d.addCreature(&c2,2,1);
+    d.addCreature(&c2,2,2);
+    
+    ASSERT_EQ(d.begin()._p,0);
+    ASSERT_EQ(d.end()._p,9);
+}
+
+TEST(DarwinFixture, Darwin_iteration_2){
+    Darwin d(3,3);
+    Species a("A");
+    Species b("B");
+    
+    Creature c1(a,'n');
+    Creature c2(a,'n');
+    Creature c3(a,'n');
+    Creature c4(b,'n');
+    Creature c5(b,'n');
+    Creature c6(b,'n');
+    
+    d.addCreature(&c1,0,0);
+    d.addCreature(&c2,0,1);
+    d.addCreature(&c3,0,2);
+    
+    d.addCreature(&c4,2,0);
+    d.addCreature(&c5,2,1);
+    d.addCreature(&c6,2,2);
+    
+    Darwin_Iterator dib=d.begin();
+    
+    ASSERT_EQ(dib._p,0);
+    ++dib;
+    ASSERT_EQ(dib._p,1);
+    ++dib;
+    ASSERT_EQ(dib._p,2);
+    ASSERT_EQ(&(*dib),&c4);
+}
+
 //*/
