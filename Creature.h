@@ -9,6 +9,10 @@ using namespace std;
 
 #define DEBUG false
 
+/**
+ *  Interface for Creature.c++
+ */
+
 class Creature {
 	friend class Darwin;
 	private:

@@ -21,7 +21,12 @@
 
 using namespace std;
 
+
 class Darwin_Iterator;
+
+/**
+ *  Interface for Darwin.c++
+ */
 
 class Darwin {
 	friend class Darwin_Iterator;

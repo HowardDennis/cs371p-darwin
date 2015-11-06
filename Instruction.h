@@ -6,6 +6,10 @@
 
 using namespace std;
 
+/**
+ *  Interface for the individual instructions
+ */
+
 class Instruction {
 	
 	public:

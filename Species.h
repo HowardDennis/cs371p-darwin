@@ -8,6 +8,10 @@ using namespace std;
 
 #define DEBUG false
 
+/**
+ *  Interface for Species.c++
+ */
+
 class Species {
 	friend class Creature;
 	friend class Darwin;
