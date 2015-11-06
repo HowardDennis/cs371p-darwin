@@ -18,7 +18,7 @@
 //*/
 
 //ACTION
-class Hop : private Instruction {
+class Hop : public Instruction {
 public:
 	Hop(){}
 private:	
@@ -72,7 +72,7 @@ private:
 
 };
 
-class Left : private Instruction {
+class Left : public Instruction {
 public:
 	Left(){}
 private:
@@ -112,8 +112,10 @@ private:
 
 };
 
-class Right : private Instruction {
+class Right : public Instruction {
+public:
 	Right(){}
+private:
 	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Right_act);
     
     FRIEND_TEST(DarwinFixture, Darwin_process_cell_3);
@@ -144,8 +146,10 @@ class Right : private Instruction {
 
 };
 
-class Infect : private Instruction {
+class Infect : public Instruction {
+public:
 	Infect(){}
+private:
 	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Infect_n);
 	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Infect_s);
 	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Infect_e);
@@ -191,8 +195,11 @@ class Infect : private Instruction {
 };
 
 //CONTROL
-class If_Empty : private Instruction {
-	int num;
+class If_Empty : public Instruction {
+public:
+    If_Empty(int n): num(n){}
+private:
+    int num;
 
 	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifempty_n);
 	FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifempty_s);
@@ -201,7 +208,7 @@ class If_Empty : private Instruction {
     
     FRIEND_TEST(DarwinFixture, Darwin_process_cell_3);
 
-	If_Empty(int n): num(n){}
+	
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
 			case 'n' : 
@@ -247,7 +254,10 @@ class If_Empty : private Instruction {
 
 };
 
-class If_Wall : private Instruction {
+class If_Wall : public Instruction {
+public:
+    If_Wall(int _n) : num(_n) {}
+private:
 	int num;
     
     FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifwall_n);
@@ -255,7 +265,7 @@ class If_Wall : private Instruction {
     FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifwall_e);
     FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifwall_w);
     
-	If_Wall(int _n) : num(_n) {}
+
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
 			case 'n' : 
@@ -300,12 +310,15 @@ class If_Wall : private Instruction {
 
 };
 
-class If_Random : private Instruction {
-	int num;
+class If_Random : public Instruction {
+public:
+    If_Random(int _n) : num(_n) {}
+private:
+    int num;
     
     FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifrandom);
     
-	If_Random(int _n) : num(_n) {}
+	
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		int r = rand();
 		r %= 2;
@@ -318,8 +331,11 @@ class If_Random : private Instruction {
 
 };
 
-class If_Enemy : private Instruction {
-	int num;
+class If_Enemy : public Instruction {
+public:
+    If_Enemy(int _n) : num(_n) {}
+private:
+    int num;
     
     FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifenemy_n);
     FRIEND_TEST(DarwinFixture, Darwin_Instruction_Ifenemy_s);
@@ -331,7 +347,6 @@ class If_Enemy : private Instruction {
     FRIEND_TEST(DarwinFixture, Darwin_Creature_act_1);
     FRIEND_TEST(DarwinFixture, Darwin_Creature_act_2);
     
-	If_Enemy(int _n) : num(_n) {}
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		switch(dir) {
 			//m stands for malfactor, which mean enemy
@@ -370,8 +385,11 @@ class If_Enemy : private Instruction {
 
 };
 
-class Go : private Instruction {
-	int num;
+class Go : public Instruction {
+public:
+    Go(int _n) : num(_n) {}
+private:	
+    int num;
     
     FRIEND_TEST(DarwinFixture, Darwin_Instruction_Go);
     
@@ -389,8 +407,7 @@ class Go : private Instruction {
     
     FRIEND_TEST(DarwinFixture, Darwin_process_cell_3);
     FRIEND_TEST(DarwinFixture, Darwin_step_1);
-    
-	Go(int _n) : num(_n) {}
+   
 	pair<int, char> act(char n, char e, char s, char w, int pc, char dir){
 		return pair<int, char> (num, 'c');
 	};

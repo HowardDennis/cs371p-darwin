@@ -844,14 +844,115 @@ TEST(DarwinFixture, Darwin_step_1){
     ASSERT_EQ(d.grid[1][3],&h3);
     ASSERT_EQ(d.grid[2][0],&h4);
     
-}/*
-TEST(DarwinFixture, Darwin_step_1){
-    
 }
-TEST(DarwinFixture, Darwin_step_1){
+TEST(DarwinFixture, Darwin_step_2){
+    Darwin d(5,5);
     
+    Species food("food");
+    Left fi0;
+    Go fi1(0);
+    food.addInstruction(&fi0);
+    food.addInstruction(&fi1);
+    
+    Species rover("rover");
+    If_Enemy ri0(9);
+    If_Empty ri1(7);
+    If_Random ri2(5);
+    Left ri3;
+    Go ri4(0);
+    Right ri5;
+    Go ri6(0);
+    Hop ri7;
+    Go ri8(0);
+    Infect ri9;
+    Go ri10(0);
+    rover.addInstruction(&ri0);
+    rover.addInstruction(&ri1);
+    rover.addInstruction(&ri2);
+    rover.addInstruction(&ri3);
+    rover.addInstruction(&ri4);
+    rover.addInstruction(&ri5);
+    rover.addInstruction(&ri6);
+    rover.addInstruction(&ri7);
+    rover.addInstruction(&ri8);
+    rover.addInstruction(&ri9);
+    rover.addInstruction(&ri10);
+    /*
+  0 1 2
+0 - - r (s)
+1 f - - (e)
+2 r r - (n n)
+
+step 1:
+  0 1 2  dir
+0 - - - 
+1 r r r (n n s)
+2 r - - (n n)
+
+step 2:
+  0 1 2  dir
+0 r r - (n n) first turns
+1 r - - (n
+2 - - r (s)
+    */
+    
+    Creature r1(rover,'n');
+    Creature r2(rover,'n');
+    Creature r3(rover,'s');
+    Creature f(food,'e');
+    
+    d.addCreature(&r1,0,2);
+    d.addCreature(&r1,1,2);
+    d.addCreature(&r3,2,0);
+    d.addCreature(&f,0,1);
+    
+    d.step(2);
+    
+    string response="Turn = 0.\n  01234\n0 rr...\n1 r....\n2 ..r..\n3 .....\n4 .....\n";
+    ostringstream w;
+    d.print(w);
+    string state=w.str();
+
+    ASSERT_EQ(state,response);
+
 }
-TEST(DarwinFixture, Darwin_step_1){
+TEST(DarwinFixture, Darwin_step_3){
+    Darwin d(8,8);
     
+    Species trap("trap");
+    
+    If_Enemy ti0(3);
+    Left ti1;
+    Go ti2(0);
+    Infect ti3;
+    Go ti4(0);
+    
+    trap.addInstruction(&ti0);
+    trap.addInstruction(&ti1);
+    trap.addInstruction(&ti2);
+    trap.addInstruction(&ti3);
+    trap.addInstruction(&ti4);
+    
+    Species hopper("hopper");
+    
+    Hop i0;
+    Go i1(0);
+
+    hopper.addInstruction(&i0);
+    hopper.addInstruction(&i1);
+    
+    Creature t1(trap,'n');
+    Creature h1(hopper,'n');
+    
+    d.addCreature(&t1,0,0);
+    d.addCreature(&h1,0,6);
+
+    d.step(7);
+    string response = "Turn = 0.\n  01234567\n0 t.......\n1 t.......\n2 ........\n3 ........\n4 ........\n5 ........\n6 ........\n7 ........\n";
+    ostringstream w;
+    d.print(w);
+    string state=w.str();
+
+    ASSERT_EQ(state,response);
 }
 //*/

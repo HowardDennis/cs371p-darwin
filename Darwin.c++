@@ -46,11 +46,17 @@ void Darwin::step(int n){
                 }
                 cp = grid[j][k];
                 if(DEBUG)
-                    cout << (long int)cp << endl;
-				if(cp!=nullptr && !(cp->acted) ) // if its an active creature
+                    cout << (long int)cp%100;
+                if(DEBUG && cp)
+                    cout <<" -> "  << cp->acted<<endl;
+                else if (DEBUG)
+                    cout << endl;
+				if(cp!=nullptr && !(cp->acted) ) {// if its an active creature
                     processCell(k,j);
-                if(cp!=nullptr && cp->acted) // if after processing the creature has acted, can reset
+                }
+                if(grid[j][k]!=nullptr && cp->acted){ // if after processing the creature has acted, can reset
                     cp->acted=false;  // since it will not return in this pass
+                }
 			}
 		}
         cp=nullptr;
