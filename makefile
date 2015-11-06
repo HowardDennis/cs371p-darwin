@@ -9,7 +9,6 @@ FILES :=                              \
     Darwin.log                       \
     Darwin.pdf						 \
     html                              \
-    Instruction.c++					\
     Instruction.h 					\
     Instructions.h 					\
     RunDarwin.c++                    \
