@@ -1,8 +1,14 @@
 #include "Creature.h"
 
+/**
+ *  Constructor. Makes a species and gives it a direction d
+ */
 Creature::Creature(const Species& s, char d): 
 	spec(s), dir(d) {}
 	
+/**
+ *  The arguments give the creature knowledge of it's surroundings, and it is passed on to species.act
+ */
 char Creature::act(char n, char e, char s, char w) { //get instruction and execute
     if(DEBUG)
         cout<<"    C:act(n="<<n <<", e="<<e<<", s="<<s<<", w="<<w<<")"<<endl;
@@ -12,6 +18,10 @@ char Creature::act(char n, char e, char s, char w) { //get instruction and execu
     pc=result.first;
     return result.second;
 }
+
+/**
+ *  Turns the creature left
+ */
 
 void Creature::turnLeft(){
     switch(dir){
@@ -29,6 +39,10 @@ void Creature::turnLeft(){
             break;    
     }
 }
+
+/**
+ *  Turns the creature right
+ */
 
 void Creature::turnRight(){
     switch(dir){

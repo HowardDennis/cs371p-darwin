@@ -20,6 +20,10 @@
 
 using namespace std;
 
+/**
+ *  Interface for Darwin.c++
+ */
+
 class Darwin {
 	private:
 		vector < vector<Creature*> > grid;

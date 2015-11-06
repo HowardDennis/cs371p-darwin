@@ -24,7 +24,9 @@ Darwin::Darwin (int w, int h) {
     grid.resize(h, vector<Creature*>(w, nullptr)); // = vector< vector<Creature>(w) >(h);
 }
 
-
+/**
+ * Does the actions of the creature and makes sure they don't act twice
+ */
 void Darwin::step(int n){
     if(DEBUG)
         cout <<"Stepping "<<n<<" times over ";
@@ -64,6 +66,10 @@ void Darwin::step(int n){
             print(cout,i+1);
 	}
 }
+
+/**
+ * Processes a creature's action
+ */
 
 void Darwin::processCell(int x, int y){
 
@@ -166,6 +172,10 @@ void Darwin::processCell(int x, int y){
     }
 }
 
+/**
+ * checks if the cell is properly allocated with a creature
+ */
+
 char Darwin::cellContent(int x, int y, string name){
     if(DEBUG)
         cout << "  checking cell content (" <<x<<", "<<y<<", "<<name<<"): "<<(long int)(grid[y][x])%100<<endl;
@@ -180,13 +190,17 @@ void Darwin::addCreature ( Creature* c, int w, int h) {
     grid[h][w] = c;
 }
 
+/**
+ * Prints the grid with numbers and letters as indicies
+ */
+
 void Darwin::print(ostream& w, int turn) {
     //printf("*** Darwin %dx%d ***\n", (int)grid.size(), (int)grid[0].size());
     w << "Turn = " << turn << ".\n";
     unsigned char i = 0;
     unsigned char p = 0;
     w << "  ";
-    while (p < grid[0].size()) {
+    while (p < grid[0].size()) { //prints top row indicies
         //The following if statements are to keep the printed indicies numbers and letters
         if (i == 10) {
             i += 7;
@@ -217,7 +231,7 @@ void Darwin::print(ostream& w, int turn) {
         w << char('0' + i) << " ";
         unsigned int j = 0;
         while (j < grid[0].size()) {
-            (grid[p][j] == nullptr) ? w << "." : w << grid[p][j]->spec.name[0];  //change
+            (grid[p][j] == nullptr) ? w << "." : w << grid[p][j]->spec.name[0]; //prints the first letter of the species's name
             ++j;
         }
         endl(w);

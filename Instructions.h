@@ -18,6 +18,11 @@
 //*/
 
 //ACTION
+
+/**
+ *  Moves the creature forward one space based on where it's facing
+ */
+
 class Hop : public Instruction {
 public:
 	Hop(){}
@@ -72,6 +77,10 @@ private:
 
 };
 
+/**
+ *  Turns the creature left
+ */
+
 class Left : public Instruction {
 public:
 	Left(){}
@@ -112,6 +121,10 @@ private:
 
 };
 
+/**
+ *  Turns the creature right
+ */
+
 class Right : public Instruction {
 public:
 	Right(){}
@@ -145,6 +158,10 @@ private:
 	};
 
 };
+
+/**
+ *  Changes the creature ahead to the infector's species
+ */
 
 class Infect : public Instruction {
 public:
@@ -195,6 +212,11 @@ private:
 };
 
 //CONTROL
+
+/**
+ *  Checks if the space ahead is empty
+ */
+
 class If_Empty : public Instruction {
 public:
     If_Empty(int n): num(n){}
@@ -254,6 +276,10 @@ private:
 
 };
 
+/**
+ *  Checks if the space ahead is outside of the grid
+ */
+
 class If_Wall : public Instruction {
 public:
     If_Wall(int _n) : num(_n) {}
@@ -310,6 +336,10 @@ private:
 
 };
 
+/**
+ *  Controls the creature if there is a random number
+ */
+
 class If_Random : public Instruction {
 public:
     If_Random(int _n) : num(_n) {}
@@ -330,6 +360,10 @@ private:
 	
 
 };
+
+/**
+ *  Sees if there is an enemy ahead
+ */
 
 class If_Enemy : public Instruction {
 public:
@@ -384,6 +418,10 @@ private:
 	}
 
 };
+
+/**
+ *  Goes to the instruction number indicated
+ */
 
 class Go : public Instruction {
 public:
